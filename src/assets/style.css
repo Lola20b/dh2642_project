@@ -1,0 +1,29 @@
+/* A debug class, used to separate components graphically during development */
+.debug {
+    border-style:solid;
+}
+
+.summaryViewQuantity {
+    text-align: right;
+}
+
+
+@media screen and (min-width: 250px) {
+    .flexParent {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+    }
+}
+
+.mainContent {
+    flex:1;
+}
+
+.sidebar {
+    flex:0 0 200px;
+}
+
+.test {
+    background-color: red;
+}
