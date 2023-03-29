@@ -1,11 +1,4 @@
-/* A debug class, used to separate components graphically during development */
-.debug {
-    border-style:solid;
-}
 
-.summaryViewQuantity {
-    text-align: right;
-}
 
 
 @media screen and (min-width: 250px) {
@@ -20,10 +13,47 @@
     flex:1;
 }
 
-.sidebar {
-    flex:0 0 200px;
-}
+/* test wont grow to full screen because 
+    it is not a flex child of flexParent */
 
 .test {
-    background-color: red;
+    height: 100%;
+    width: 100%;
+
+}
+
+
+/* define profileTable that is a table with 3 columns and two rows. Make it have lines between the rows and columns. */
+.profileTable {
+    height: 100%;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: gray;
+    background-color: #ffffff;
+}
+
+.tableTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.profileView_song_name {
+    border: 1px solid black;
+    padding: 5px;
+    color: black;
+}
+
+.profileView_artist_name {
+    border: 1px solid black;
+    padding: 5px;
+    color: black;
+}
+
+.profileView_album_name {
+    border: 1px solid black;
+    padding: 5px;
+    color: black;
 }

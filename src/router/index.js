@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import testView from '../views/testView.vue'
 import ProfileView from '../views/profileView'
+import Profile from '../presenters/profilePresenter'
 
 // TODO: Replace placeholder views with corresponding presenters
 const router = createRouter({
@@ -9,7 +10,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: testView
+      component: Profile
     },
     {
       path: '/profile',
