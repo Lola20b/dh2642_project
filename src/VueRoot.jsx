@@ -8,7 +8,7 @@ const VueRoot = {
             return (
                 <div class="flexParent">
                 <div class="test">Placeholder</div>
-                <div class="mainContent">Placeholder</div>
+                <div class="mainContent"><RouterView/></div>
                 </div>
             );
         }
