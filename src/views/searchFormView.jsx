@@ -2,13 +2,13 @@ function SearchFormView(props){
   
     return (
             <div>
-                <input onChange={searchInputACB}></input>
-                <select onChange={chooseTypeACB}>
-                <option value=""></option>
+                <h2>Search for a song, artist or album!</h2>
+                <input class="searchInput" onChange={searchInputACB}></input>
+                <select class="types" onChange={chooseTypeACB}>
                     {props.typeOptions.map(typeCB)}
                 </select>
 
-                <button onClick={clickSearchACB}>Search</button>
+                <button class="searchButton" onClick={clickSearchACB}>Search</button>
 
 
 
