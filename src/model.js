@@ -1,4 +1,5 @@
-
+import {searchMusic} from "./geniusAPI.js";
+import resolvePromise from "./resolvePromise";
 
 // Model to keep abstract data
 
@@ -6,7 +7,8 @@ class Model{
     constructor(){
         // model properties
         this.searchInput={};
-        this.seachOptions = {};
+        this.seachParams = {q: "La"};
+        this.searchResultsPromiseState = {};
     }
 
     // Set the search input
@@ -21,7 +23,7 @@ class Model{
 
     // Do the search
     doSearch(searchParams) {
-        console.log(searchParams)
+        resolvePromise(searchMusic(searchParams), this.searchResultsPromiseState);
     }
 
 
