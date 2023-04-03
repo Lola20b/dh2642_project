@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { reactive } from "vue";
-import testView from '../views/testView.vue'
 import ProfileView from '../views/profileView'
 import Search from '../presenters/searchPresenter'
 import Model from '../model.js'

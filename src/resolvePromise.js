@@ -1,5 +1,5 @@
 function resolvePromise(promiseToResolve, promiseState){
-
+    if (!promiseToResolve) return;
 	promiseState.promise=promiseToResolve;
     promiseState.data= null;         
     promiseState.error= null;
