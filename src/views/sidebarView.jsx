@@ -9,16 +9,7 @@ function SidebarView(props) {
                 <a href="/">Home</a>
             </div>
             <div>
-                <a href="#">Artists</a>
-            </div>
-            <div>
-            <a href="#">Albums</a>
-            </div>
-            <div>
-            <a href="#">Songs</a>
-            </div>
-            <div>
-            <a href="#">Find something!</a>
+                <a href="/profile">Profile</a>
             </div>
         </div>
     );
