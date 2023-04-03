@@ -7,18 +7,17 @@ class Model{
     constructor(){
         // model properties
         this.searchInput={};
-        this.seachParams = {q: "La"};
         this.searchResultsPromiseState = {};
     }
 
     // Set the search input
     setSearchQuery(searchText) {
-        this.searchInput.query = searchText;
+        this.searchInput.q = searchText;
     }
 
     // Set the search type
     setSearchType(searchType) {
-        this.searchInput.type = searchType;
+        //this.searchInput.type = searchType;
     }
 
     // Do the search

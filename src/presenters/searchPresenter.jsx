@@ -13,7 +13,7 @@ export default{
 
         function bornACB(){
             if(!props.model.searchResultsPromiseState.promise) {
-                resolvePromise(props.model.doSearch({type: "Song", query: "Bob Marley"}), props.model.searchResultsPromiseState);
+                resolvePromise(props.model.doSearch({q: "Bob Marley"}), props.model.searchResultsPromiseState);
             }
         }
 

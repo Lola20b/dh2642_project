@@ -7,11 +7,10 @@ function searchMusic(object) {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': API_KEY
-        }
+        },
     };
 
     function transformResultACB(response){
-        console.log(response);
         return response;
     }
 
@@ -22,10 +21,9 @@ function searchMusic(object) {
         return response.json(); 
     }
             
-
     return fetch(BASE_URL + '/search/multi/?' + new URLSearchParams(
         object
-    ), options).then(treatHTTPResponseACB).then(transformResultACB);
+    ) + '&page=1', options).then(treatHTTPResponseACB).then(transformResultACB);
 }
 
 export {searchMusic}

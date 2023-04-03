@@ -64,3 +64,23 @@
 .searchButton:hover {
     background-color: rgb(79, 104, 79);
 }
+
+.songView {
+    border: 1px solid black;
+    margin: 2%;
+    padding: 2%;
+}
+
+.artistView {
+    border: 1px solid black;
+    margin: 2%;
+    padding: 2%;
+    max-height: 200px;
+}
+
+.albumView {
+    border: 1px solid black;
+    margin: 2%;
+    padding: 2%;
+}
+

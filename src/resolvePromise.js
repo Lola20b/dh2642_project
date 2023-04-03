@@ -14,6 +14,7 @@ function resolvePromise(promiseToResolve, promiseState){
     }
     if (promiseToResolve !== null) {
         promiseToResolve.then(saveDataACB).catch(saveErrorACB);
+        // console.log(promiseState.data)
     }
     
 }
