@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { reactive } from "vue";
-import ProfileView from '../views/profileView'
+import Profile from '../presenters/profilePresenter'
 import Search from '../presenters/searchPresenter'
 import Model from '../model.js'
 
@@ -19,7 +19,7 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: ProfileView
+      component: Profile
     },
   ]
 })
