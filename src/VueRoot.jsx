@@ -1,3 +1,5 @@
+import Sidebar from './presenters/SidebarPresenter'
+
 import {RouterView} from "vue-router";
 
 const VueRoot = {
@@ -7,6 +9,7 @@ const VueRoot = {
         return function renderACB(){
             return (
                 <div class="flexParent">
+                <div class="sidebar"><Sidebar/></div>
                 <div class="mainContent"><RouterView/></div>
                 </div>
             );

@@ -5,7 +5,7 @@
     .flexParent {
         display: flex;
         flex-direction: row;
-        height: 100%;
+        height: 100vh;
     }
 }
 
@@ -13,12 +13,29 @@
     flex:1;
 }
 
-/* test wont grow to full screen because 
-    it is not a flex child of flexParent */
 
-.test {
-    height: 100%;
-    width: 100%;
+.sidebar {
+    flex:0 0 200px;
+    border-style:solid;
+    padding: 10px;
+}
+
+.username {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    font-size: large;
+}
+.sidebarView{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
 }
 
 
