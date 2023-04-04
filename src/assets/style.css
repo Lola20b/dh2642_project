@@ -1,11 +1,4 @@
-/* A debug class, used to separate components graphically during development */
-.debug {
-    border-style:solid;
-}
 
-.summaryViewQuantity {
-    text-align: right;
-}
 
 
 @media screen and (min-width: 250px) {
@@ -20,14 +13,11 @@
     flex:1;
 }
 
+
 .sidebar {
     flex:0 0 200px;
     border-style:solid;
     padding: 10px;
-}
-
-.test {
-    background-color: red;
 }
 
 .username {
@@ -46,4 +36,95 @@
     align-items: flex-start;
     padding: 0px;
     gap: 10px;
+}
+
+
+/* define profileTable that is a table with 3 columns and two rows. Make it have lines between the rows and columns. */
+.profileTable {
+    height: 100%;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: gray;
+    background-color: #ffffff;
+}
+
+.tableTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.profileView_song_name {
+    border: 1px solid black;
+    padding: 5px;
+    color: black;
+}
+
+.profileView_artist_name {
+    border: 1px solid black;
+    padding: 5px;
+    color: black;
+}
+
+.profileView_album_name {
+    border: 1px solid black;
+    padding: 5px;
+    color: black;
+}
+
+.searchInput {
+    margin: 2% 2% 2% 0%;
+    padding: 5px 10px;
+    border: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 10px;
+
+}
+
+.types {
+    margin: 2%;
+    padding: 5px 10px;
+    border: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+
+.searchButton {
+    margin: 2%;
+    padding: 5px 10px;
+    background-color: darkseagreen;
+    border: none;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 10px;
+
+}
+
+.searchButton:hover {
+    background-color: rgb(79, 104, 79);
+}
+
+.songView {
+    border: 1px solid black;
+    margin: 2%;
+    padding: 2%;
+}
+
+.artistView {
+    border: 1px solid black;
+    margin: 2%;
+    padding: 2%;
+    max-height: 200px;
+}
+
+.albumView {
+    border: 1px solid black;
+    margin: 2%;
+    padding: 2%;
 }

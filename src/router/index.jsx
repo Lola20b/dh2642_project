@@ -1,7 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import testView from '../views/testView.vue'
-import ProfileView from '../views/profileView'
+import { reactive } from "vue";
+import Profile from '../presenters/profilePresenter'
 import Sidebar from '../presenters/SidebarPresenter'
+import Search from '../presenters/searchPresenter'
+import Model from '../model.js'
+
+// Model
+const myModel= reactive(new Model());
 
 // TODO: Replace placeholder views with corresponding presenters
 const router = createRouter({
@@ -10,18 +15,13 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: testView
+      component: <Search model={myModel} />,
     },
     {
       path: '/profile',
       name: 'profile',
-      component: ProfileView
+      component: Profile
     },
-    {
-      path: '/sidebar',
-      name: 'sidebar',
-      component: Sidebar
-    }
   ]
 })
 
