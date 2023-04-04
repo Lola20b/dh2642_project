@@ -6,8 +6,8 @@ const VueRoot = {
 
         return function renderACB(){
             return (
-                <div>
-                <div><RouterView/></div>
+                <div class="flexParent">
+                <div class="mainContent"><RouterView/></div>
                 </div>
             );
         }
