@@ -18,7 +18,7 @@ const router = createRouter({
       component: <Search model={myModel} />,
     },
     {
-      path: '/profile',
+      path: '/Profile',
       name: 'profile',
       component: Profile
     },
