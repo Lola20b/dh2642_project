@@ -18,9 +18,8 @@ So far, we have done a homepage where the user can search for songs, albums and 
 
 ## Project file structure (short description/purpose of each file)
 
-| File/Folder            | Description                                                                                                                                                 |
+| /.firebase            | Used to deploy in firebase                                                                                                                                                 |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| /.firebase             | Used to deploy in firebase                                                                                                                                                            |
 | /.vscode              | Used for vscode                                                                                                                                                            |
 | /public               | This folder is used to store static assets that are not processed by Webpack/Vite (eg. logos, fonts, etc)                                                                  |
 | /dist                 | default build output location                                                                                                                                              |
@@ -28,7 +27,7 @@ So far, we have done a homepage where the user can search for songs, albums and 
 | /src/components/*     | Includes reusable components from the scaffolding that aren’t currently being used                                                                                         |
 | /src/presenters/*     | Includes the presenters of the application, ie connects the model with the views                                                                                           |
 | /src/router/index.jsx | Router config file                                                                                                                                                         |
-| /src/views/*          | Includes the views of the application                                                                                                                                      |                                                                                                                                    |
+| /src/views/*          | Includes the views of the application                                                                                                                                      |                                                                                                                                   |
 
 ### Specific files
 profileView/presenter: A page where the user can see saved songs,albums and artists. The user should also be able to like/un-like from this page and navigate to the detailed view containing additional information for a song/album/artist.
