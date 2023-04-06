@@ -40,7 +40,7 @@ export default{
         return function acb(props){return (
         <div>
             {<SearchFormView 
-                typeOptions={["Song", "Artist", "Album"]} 
+                typeOptions={["All", "Song", "Artist", "Album"]} 
                 onSearchInput={onSearchInputACB} 
                 onType={onTypeACB}
                 onSearch={onSearchACB}
