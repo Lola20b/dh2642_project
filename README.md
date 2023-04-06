@@ -19,7 +19,6 @@ So far, we have done a homepage where the user can search for songs, albums and 
 ## Project file structure (short description/purpose of each file)
 
 | /.firebase            | Used to deploy in firebase                                                                                                                                                 |
-|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | /.vscode              | Used for vscode                                                                                                                                                            |
 | /public               | This folder is used to store static assets that are not processed by Webpack/Vite (eg. logos, fonts, etc)                                                                  |
 | /dist                 | default build output location                                                                                                                                              |
