@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { reactive } from "vue";
 import Profile from '../presenters/profilePresenter'
-import Sidebar from '../presenters/SidebarPresenter'
 import Search from '../presenters/searchPresenter'
 import Model from '../model.js'
+import Info from '../presenters/infoPresenter'
 
 // Model
 const myModel= reactive(new Model());
@@ -21,6 +21,11 @@ const router = createRouter({
       path: '/Profile',
       name: 'profile',
       component: Profile
+    },
+    {
+      path: '/Info',
+      name: 'info',
+      component: Info
     },
   ]
 })
