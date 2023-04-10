@@ -5,8 +5,9 @@
     .flexParent {
         display: flex;
         flex-direction: row;
-        height: 100vh;
+        height: 100%;
     }
+    
 }
 
 .mainContent {
@@ -128,5 +129,10 @@
 .albumView {
     border: 1px solid black;
     margin: 2%;
+    padding: 2%;
+}
+
+.infoView {
+    border-style: solid;
     padding: 2%;
 }
