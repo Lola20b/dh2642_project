@@ -119,10 +119,53 @@
 }
 
 .artistView {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background-color: rgb(83, 73, 73);
+    width: 100%;
     border: 1px solid black;
     margin: 2%;
     padding: 2%;
     max-height: 200px;
+}
+
+.artistViewHeader {
+    width: 100%;
+    padding: 0px;
+    gap: 10px;
+}
+
+.searchResultView_left {
+    display: flex;
+    flex: 1;
+    flex-direction: column; 
+    align-items: left;
+    position: relative;
+}
+
+.searchResultView_right {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-align: right;
+    align-items: right;
+    width: 100%;
+      
+}
+
+.artistViewName {
+}
+
+/* picture should be as far right as possible*/
+.artistViewPicture { 
+    position: absolute;
+    right: 0;
+    max-width: 150px;
+    max-height: 150px;
+    height: 100%;
+    border: 1px solid black;
 }
 
 .albumView {
