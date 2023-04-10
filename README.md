@@ -5,10 +5,11 @@
 Our app will allow the user to search for songs, albums and artists and find interesting information about them. Furthermore the user will be able to “like” specific songs,albums or artists and add them to a list specific to that user. 
 
 ## What we have done so far
-So far, we have done a homepage where the user can search for songs, albums and artists and get the three top results from the genius API. We have also done a sidebar where the user can navigate between the homepage and the profile. In the profile view, we have hardcoded an example of what the profile could look like. In the profile, the user can see songs, artists and albums that the user has saved. 
+So far, we have done a homepage where the user can search for songs, albums and artists and get the three top results from the genius API. We have also done a sidebar where the user can navigate between the homepage and the profile. In the profile view, we have hardcoded an example of what the profile could look like. In the profile, the user can see songs, artists and albums that the user has saved.  In the info view we have a hardcoded example of how the information for a song could look like.
 
 ## What we still plan to do
-- A detailed view for songs,albums and artists that shows interesting information
+- A information view for albums and artists that shows interesting information
+- Fetch detailed information for specific songs, albums or artists from the genius API
 - A login system allowing for different users
 - A rating system allowing the user to rate songs/albums/artists
 - Make it possible for users to only search for songs, artists or album, alternatively search for everything 
@@ -40,7 +41,7 @@ SearchPresenter: Provide the searchFormView and searchResultView with the search
 
 sidebarView/-Presenter: Contains the sidebar with username and profile picture and links to the homepage and profile page
 
-infoView/-Presenter: A page that will contain information about a certain song, album or artist
+infoView/-Presenter: A page that will contain information about a certain song, album or artist. Currently it only includes an example page for a song that can be found at "/info"
 
 model.js: Model for the application. Contains abstract data for the application, such as search queries and promise state.
 
