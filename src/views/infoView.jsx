@@ -1,6 +1,6 @@
 function InfoView(props) {
     if (props.type === "song") {
-        return (<div class="debug">
+        return (<div class="infoView">
         <h1>{props.songData.title}</h1>
         <h2>{props.songData.artist}</h2>
         <img src={props.songData.custom_song_art_image_url} height="200"></img>
