@@ -112,13 +112,10 @@
     background-color: rgb(79, 104, 79);
 }
 
-.songView {
-    border: 1px solid black;
-    margin: 2%;
-    padding: 2%;
-}
 
-.artistView {
+/* SEARCHRESULTS */
+
+.searchResultViewBox {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -128,10 +125,10 @@
     border: 1px solid black;
     margin: 2%;
     padding: 2%;
-    max-height: 200px;
+    max-height: 175px;
 }
 
-.artistViewHeader {
+.searchResultViewHeader {
     width: 100%;
     padding: 0px;
     gap: 10px;
@@ -151,25 +148,18 @@
     flex-direction: column;
     text-align: right;
     align-items: right;
-    width: 100%;
+    max-width: 100px;
+    max-height: 100px;
+
       
 }
 
-.artistViewName {
-}
-
 /* picture should be as far right as possible*/
-.artistViewPicture { 
+.searchResultViewPicture { 
     position: absolute;
+    top: 0;
     right: 0;
-    max-width: 150px;
-    max-height: 150px;
-    height: 100%;
+    max-height: 100px;
+    max-width: 100px;
     border: 1px solid black;
-}
-
-.albumView {
-    border: 1px solid black;
-    margin: 2%;
-    padding: 2%;
 }

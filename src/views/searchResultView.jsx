@@ -13,23 +13,29 @@ function SearchFormView(props){
 
     function songView(result){
         return (
-            <div class='songView'>
-                <h3>Song</h3>
-                <p>{result.result.title} {result.result.artist_names}</p>
+            <div class='searchResultViewBox'>
+                <div class="searchResultView_left">
+                    <h3 class="searchResultView_header">Song</h3>
+                    <p>{result.result.title}   By: {result.result.artist_names}</p>
+                    <a class="searchResultViewMoreInfo" href="">More information</a>
+                </div>
+                <div class="searchResultView_right">
+                    <img class="searchResultsViewPicture" src={result.result.song_art_image_url} alt="Song art image"/>
+                </div>
             </div>
         );
     }
 
     function artistView(result){       
         return (
-            <div class='artistView'>
+            <div class='searchResultViewBox'>
                 <div class="searchResultView_left">
-                    <h3 class="artistViewHeader">Artist</h3>
-                    <p class="artistViewName">{result.result.name}</p>
+                    <h3 class="searchResultViewHeader">Artist</h3>
+                    <p>{result.result.name}</p>
                     <a class="searchResultViewMoreInfo" href="">More information</a>
                 </div>
                 <div class="searchResultView_right">
-                    <img class="artistViewPicture" src={result.result.image_url} alt="Artist Image"/>
+                    <img class="searchResultViewPicture" src={result.result.image_url} alt="Artist Image"/>
                 </div>
 
             </div>
