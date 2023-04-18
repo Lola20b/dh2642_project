@@ -5,7 +5,7 @@ function InfoView(props) {
         <h2>{props.songData.song.artist}</h2>
         <img src={props.songData.song.custom_song_art_image_url} height="200"></img>
         <h3>Lyrics</h3>
-        <p>{props.lyricsData}</p>
+        <p>{props.lyricsData.lyrics.lyrics.body.plain}</p>
         <h3>Description</h3>
         <p>{props.songData.song.description_preview}</p>
 
