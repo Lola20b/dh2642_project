@@ -1,4 +1,4 @@
-import SidebarView from "../views/SidebarView";
+import SidebarView from "../views/sidebarView";
 
 export default 
 {

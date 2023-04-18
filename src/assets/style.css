@@ -113,23 +113,56 @@
     background-color: rgb(79, 104, 79);
 }
 
-.songView {
+
+/* SEARCHRESULTS */
+
+.searchResultViewBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background-color: rgb(83, 73, 73);
+    width: 100%;
     border: 1px solid black;
     margin: 2%;
     padding: 2%;
+    max-height: 175px;
 }
 
-.artistView {
-    border: 1px solid black;
-    margin: 2%;
-    padding: 2%;
-    max-height: 200px;
+.searchResultViewHeader {
+    width: 100%;
+    padding: 0px;
+    gap: 10px;
 }
 
-.albumView {
+.searchResultView_left {
+    display: flex;
+    flex: 1;
+    flex-direction: column; 
+    align-items: left;
+    position: relative;
+}
+
+.searchResultView_right {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-align: right;
+    align-items: right;
+    max-width: 100px;
+    max-height: 100px;
+
+      
+}
+
+/* picture should be as far right as possible*/
+.searchResultViewPicture { 
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-height: 100px;
+    max-width: 100px;
     border: 1px solid black;
-    margin: 2%;
-    padding: 2%;
 }
 
 .infoView {

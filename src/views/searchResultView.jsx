@@ -13,32 +13,47 @@ function SearchFormView(props){
 
     function songView(result){
         return (
-            <div class='songView'>
-                <h3>Song</h3>
-                <p>{result.result.title} {result.result.artist_names}</p>
+            <div class='searchResultViewBox'>
+                <div class="searchResultView_left">
+                    <h3 class="searchResultView_header">Song</h3>
+                    <p>{result.result.title}   By: {result.result.artist_names}</p>
+                    <a class="searchResultViewMoreInfo" href="">More information</a>
+                </div>
+                <div class="searchResultView_right">
+                    <img class="searchResultsViewPicture" src={result.result.song_art_image_url} alt="Song art image"/>
+                </div>
             </div>
         );
     }
 
-    function artistView(result){
-        // artist name is in result.result.name
-        // artist image is in result.result.image_url
-        // show both
-        
+    function artistView(result){       
         return (
-            <div class='artistView'>
-                <h3>Artist</h3>
-                <p>{result.result.name}
-                <img style='height:150px' src={result.result.image_url} alt="Artist Image"/>
-                </p>
+            <div class='searchResultViewBox'>
+                <div class="searchResultView_left">
+                    <h3 class="searchResultViewHeader">Artist</h3>
+                    <p>{result.result.name}</p>
+                    <a class="searchResultViewMoreInfo" href="">More information</a>
+                </div>
+                <div class="searchResultView_right">
+                    <img class="searchResultViewPicture" src={result.result.image_url} alt="Artist Image"/>
+                </div>
+
             </div>
         );
     }
 
     function albumView(result){
         return (
-            <div class='albumView'>
-                Album
+            <div class='searchResultViewBox'>
+                <div class="searchResultView_left">
+                    <h3 class="searchResultViewHeader">Album</h3>
+                    <p>{result.result.full_title}</p>
+                    <a class="searchResultViewMoreInfo" href="">More information</a>
+                </div>
+                <div class="searchResultView_right">
+                    <img class="searchResultViewPicture" src={result.result.cover_art_thumbnail_url} alt="Album art Image"/>
+                </div>
+
             </div>
         );
     }

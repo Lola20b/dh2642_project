@@ -6,7 +6,8 @@ function searchMusic(object) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': API_KEY
+            'X-RapidAPI-Key': API_KEY,
+            'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
         },
     };
 
@@ -23,7 +24,7 @@ function searchMusic(object) {
             
     return fetch(BASE_URL + '/search/multi/?' + new URLSearchParams(
         object
-    ) + '&page=1', options).then(treatHTTPResponseACB).then(transformResultACB);
+    ), options).then(treatHTTPResponseACB).then(transformResultACB);
 }
 
 export {searchMusic}
