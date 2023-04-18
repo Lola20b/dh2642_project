@@ -25,7 +25,7 @@ const router = createRouter({
     {
       path: '/Info',
       name: 'info',
-      component: Info
+      component: <Info model={myModel} />
     },
   ]
 })
