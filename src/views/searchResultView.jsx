@@ -44,8 +44,16 @@ function SearchFormView(props){
 
     function albumView(result){
         return (
-            <div class='albumView'>
-                Album
+            <div class='searchResultViewBox'>
+                <div class="searchResultView_left">
+                    <h3 class="searchResultViewHeader">Album</h3>
+                    <p>{result.result.full_title}</p>
+                    <a class="searchResultViewMoreInfo" href="">More information</a>
+                </div>
+                <div class="searchResultView_right">
+                    <img class="searchResultViewPicture" src={result.result.cover_art_thumbnail_url} alt="Album art Image"/>
+                </div>
+
             </div>
         );
     }
