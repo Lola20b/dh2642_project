@@ -4,6 +4,7 @@ import Profile from '../presenters/profilePresenter'
 import Sidebar from '../presenters/sidebarPresenter'
 import Search from '../presenters/searchPresenter'
 import Model from '../model.js'
+import Info from '../presenters/infoPresenter'
 
 // Model
 const myModel= reactive(new Model());
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/Profile',
       name: 'profile',
       component: Profile
+    },
+    {
+      path: '/Info',
+      name: 'info',
+      component: Info
     },
   ]
 })
