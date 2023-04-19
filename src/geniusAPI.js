@@ -1,31 +1,44 @@
 import {BASE_URL, API_KEY} from "/src/apiConfig.js";
 
+// function below is taken from lecture slides
+function treatHTTPResponseACB(response){ 
+    if(!response.ok) throw new Error("API problem "+response.status);  
+            // or response.status!==200 
+    return response.json(); 
+}
+
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': API_KEY
+    },
+};
 
 function searchMusic(object) {
-    
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': API_KEY,
-            'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
-        },
-    };
-
     function transformResultACB(response){
         return response;
     }
-
-        // function below is taken from lecture slides
-    function treatHTTPResponseACB(response){ 
-        if(!response.ok) throw new Error("API problem "+response.status);  
-                // or response.status!==200 
-        return response.json(); 
-    }
-            
+       
     return fetch(BASE_URL + '/search/multi/?' + new URLSearchParams(
         object
     ), options).then(treatHTTPResponseACB).then(transformResultACB);
 }
 
-export {searchMusic}
+function getSongDetails(object) {
+    return fetch(BASE_URL + '/song/details/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
+}
+
+function getLyricsDetails(object) {
+    return fetch(BASE_URL + '/song/lyrics/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
+}
+
+function getAlbumDetails(object) {
+    return fetch(BASE_URL + '/album/details/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
+}
+
+function getArtistDetails(object) {
+    return fetch(BASE_URL + '/artist/details/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
+}
+
+export {searchMusic, getSongDetails, getLyricsDetails, getAlbumDetails, getArtistDetails}
 

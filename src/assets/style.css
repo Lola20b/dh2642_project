@@ -168,4 +168,5 @@
 .infoView {
     border-style: solid;
     padding: 2%;
+    white-space: pre-line;
 }
