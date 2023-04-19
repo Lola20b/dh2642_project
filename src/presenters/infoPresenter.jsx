@@ -21,9 +21,19 @@ export default
             return ( <div>
                 
                 {promiseNoData(props.model.artistPromiseState) || 
-                <InfoView type={"artist"} artistData = {props.model.artistPromiseState.data}/>}
+                <InfoView type={"artist"} artistData = {props.model.artistPromiseState.data} saveArtist={addArtistToProfileACB}/>}
             
                 </div>);
+
+            function addSongToProfileACB(songID) {
+                props.model.saveSong(songID);
+            }
+            function addAlbumToProfileACB(albumID) {
+                props.model.saveAlbum(albumID);
+            }
+            function addArtistToProfileACB(artistID) {
+                props.model.saveArtist(artistID);
+            }
         };
     },
 }

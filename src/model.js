@@ -12,6 +12,10 @@ class Model{
         this.lyricsPromiseState = {};
         this.albumPromiseState = {};
         this.artistPromiseState = {};
+        
+        this.savedSongs = [];
+        this.savedAlbums = [];
+        this.savedArtists = [];
     }
 
     // Set the search input
@@ -43,6 +47,41 @@ class Model{
 
     fetchArtist(artistParams) {
         resolvePromise(getArtistDetails(artistParams), this.artistPromiseState)
+    }
+
+    saveSong(songID) {
+        function sameSongIdCB(id) {
+            return id === songID;
+        }
+
+        // Adds artistID att end of savedArtists if not already present
+        if (!this.savedSongs.some(sameSongIdCB)) {
+            this.savedSongs= [...this.savedSongs, songID];
+        }
+    }
+
+    saveAlbum(albumID) {
+        function sameAlbumIdCB(id) {
+            return id === albumID;
+        }
+
+        // Adds artistID att end of savedArtists if not already present
+        if (!this.savedAlbums.some(sameAlbumIdCB)) {
+            this.savedAlbums= [...this.savedAlbums, albumID];
+        }
+    }
+
+    saveArtist(artistID) {
+        function sameArtistIdCB(id) {
+            return id === artistID;
+        }
+
+        // Adds artistID att end of savedArtists if not already present
+        if (!this.savedArtists.some(sameArtistIdCB)) {
+            this.savedArtists= [...this.savedArtists, artistID];
+            console.log("Save artist");
+            console.log(this.savedArtists);
+        }
     }
 }
 
