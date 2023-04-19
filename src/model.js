@@ -7,6 +7,9 @@ class Model{
     constructor(){
         // model properties
         this.searchInput={};
+        this.searchInput.q = "";
+        this.searchInput.per_page = 5;
+        this.searchInput.page = 1;
         this.searchResultsPromiseState = {};
     }
 
