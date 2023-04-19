@@ -86,6 +86,26 @@ class Model{
             console.log(this.savedArtists);
         }
     }
+
+    addObserver(myObserverACB) {
+        this.observerArray=[...this.observerArray, myObserverACB];
+    }
+    
+    removeObserver(myObserverACB) {
+        this.observerArray=this.observerArray.filter(removeObserverCB)
+
+        function removeObserverCB(elem){
+            return elem!==myObserverACB;
+        }
+    }
+
+    notifyObservers(payload) {
+        this.observerArray.forEach(invokeObserverCB) 
+
+        function invokeObserverCB(obs){
+             try{obs(payload);}catch(err){console.error(err);} 
+        }
+    }
 }
 
 export default Model;
