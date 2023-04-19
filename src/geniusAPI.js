@@ -21,7 +21,7 @@ function searchMusic(object) {
        
     return fetch(BASE_URL + '/search/multi/?' + new URLSearchParams(
         object
-    ) + '&page=1', options).then(treatHTTPResponseACB).then(transformResultACB);
+    ), options).then(treatHTTPResponseACB).then(transformResultACB);
 }
 
 function getSongDetails(object) {

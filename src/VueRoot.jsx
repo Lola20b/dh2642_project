@@ -1,4 +1,4 @@
-import Sidebar from './presenters/SidebarPresenter'
+import Sidebar from './presenters/sidebarPresenter'
 
 import {RouterView} from "vue-router";
 
