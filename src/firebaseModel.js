@@ -9,8 +9,14 @@ const app= initializeApp(firebaseConfig);
 const db= getDatabase(app);
 const rf = ref(db,"object")
 
+function connectModelToFirebase(model) {
+    //addObserver --> if model.ready set(REF)
+    return;
+}
+
 
 function firebaseModelPromise(model) {
+    //model.ready=false, get(REF) --> persistenceToModel --> model.ready=true
     return;
 }
 
@@ -23,4 +29,4 @@ function persistenceToModel(persistedData={}, model) {
 }
 
 
-export {observerRecap, firebaseModelPromise, modelToPersistence, persistenceToModel};
+export {observerRecap, firebaseModelPromise, modelToPersistence, persistenceToModel, connectModelToFirebase};

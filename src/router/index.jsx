@@ -4,6 +4,7 @@ import Profile from '../presenters/profilePresenter'
 import Search from '../presenters/searchPresenter'
 import Model from '../model.js'
 import Info from '../presenters/infoPresenter'
+import Auth from '../presenters/AuthPresenter'
 
 // Model
 const myModel= reactive(new Model());
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/Info',
       name: 'info',
       component: Info
+    },
+    {
+      path: '/Auth',
+      name: 'Auth',
+      component: Auth
     },
   ]
 })
