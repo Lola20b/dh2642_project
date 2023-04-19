@@ -36,5 +36,9 @@ function getAlbumDetails(object) {
     return fetch(BASE_URL + '/album/details/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
 }
 
-export {searchMusic, getSongDetails, getLyricsDetails, getAlbumDetails}
+function getArtistDetails(object) {
+    return fetch(BASE_URL + '/artist/details/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
+}
+
+export {searchMusic, getSongDetails, getLyricsDetails, getAlbumDetails, getArtistDetails}
 

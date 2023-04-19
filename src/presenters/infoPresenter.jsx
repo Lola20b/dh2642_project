@@ -8,8 +8,8 @@ export default
     props: ["model"],
     setup(props) {
         function lifeACB(){
-            if(!props.model.albumPromiseState.promise) {
-                props.model.fetchAlbum({id: "368574"});
+            if(!props.model.artistPromiseState.promise) {
+                props.model.fetchArtist({id: "344497"});
             };
         }
         function ripACB(){console.log("perform cleanup");} 
@@ -20,8 +20,8 @@ export default
         return function renderACB() {
             return ( <div>
                 
-                {promiseNoData(props.model.albumPromiseState) || 
-                <InfoView type={"album"} albumData = {props.model.albumPromiseState.data}/>}
+                {promiseNoData(props.model.artistPromiseState) || 
+                <InfoView type={"artist"} artistData = {props.model.artistPromiseState.data}/>}
             
                 </div>);
         };

@@ -12,14 +12,18 @@ function InfoView(props) {
     </div>);
     } else if (props.type === "album") {
         return (<div class="infoView">
-             <h1>{props.albumData.album.full_title}</h1>
-             <img src={props.albumData.album.cover_art_url} height="200"></img>
-             <p>Release date: {props.albumData.album.release_date_for_display}</p>
-             <h3>Description</h3>
-             <p>{props.albumData.album.description_preview}</p>
-             </div>);
+            <h1>{props.albumData.album.full_title}</h1>
+            <img src={props.albumData.album.cover_art_url} height="200"></img>
+            <p>Release date: {props.albumData.album.release_date_for_display}</p>
+            <h3>Description</h3>
+            <p>{props.albumData.album.description_preview}</p>
+            </div>);
     } else if (props.type === "artist") {
-        return (<div> Artist </div>);
+        return (<div class="infoView">
+            <h1>{props.artistData.artist.name}</h1>
+            <img src={props.artistData.artist.image_url} height="200"></img>
+            <p>{props.artistData.artist.description_preview}</p>
+            </div>);
     }
 }
 
