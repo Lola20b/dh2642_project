@@ -8,9 +8,8 @@ export default
     props: ["model"],
     setup(props) {
         function lifeACB(){
-            if(!props.model.songResultsPromiseState.promise || !props.model.lyricsResultsPromiseState.promise) {
-                props.model.fetchSong({id: "2396871"});
-                props.model.fetchLyrics({id: "2396871", text_format: 'plain'});
+            if(!props.model.albumPromiseState.promise) {
+                props.model.fetchAlbum({id: "368574"});
             };
         }
         function ripACB(){console.log("perform cleanup");} 
@@ -21,7 +20,8 @@ export default
         return function renderACB() {
             return ( <div>
                 
-                {promiseNoData(props.model.songResultsPromiseState) || promiseNoData(props.model.lyricsResultsPromiseState) ||<InfoView type={"song"} songData = {props.model.songResultsPromiseState.data} lyricsData= {props.model.lyricsResultsPromiseState.data}/>}
+                {promiseNoData(props.model.albumPromiseState) || 
+                <InfoView type={"album"} albumData = {props.model.albumPromiseState.data}/>}
             
                 </div>);
         };

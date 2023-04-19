@@ -7,15 +7,14 @@ function treatHTTPResponseACB(response){
     return response.json(); 
 }
 
-function searchMusic(object) {
-    
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': API_KEY
-        },
-    };
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': API_KEY
+    },
+};
 
+function searchMusic(object) {
     function transformResultACB(response){
         return response;
     }
@@ -26,26 +25,16 @@ function searchMusic(object) {
 }
 
 function getSongDetails(object) {
-    const options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': API_KEY,
-        }
-    };
-
     return fetch(BASE_URL + '/song/details/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
 }
 
 function getLyricsDetails(object) {
-    const options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': API_KEY,
-        }
-    };
-
     return fetch(BASE_URL + '/song/lyrics/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
 }
 
-export {searchMusic, getSongDetails, getLyricsDetails}
+function getAlbumDetails(object) {
+    return fetch(BASE_URL + '/album/details/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
+}
+
+export {searchMusic, getSongDetails, getLyricsDetails, getAlbumDetails}
 
