@@ -52,36 +52,36 @@ class Model{
         resolvePromise(getArtistDetails(artistParams), this.artistPromiseState)
     }
 
-    saveSong(songID) {
-        function sameSongIdCB(id) {
-            return id === songID;
+    saveSong(song) {
+        function sameSongIdCB(currSong) {
+            return currSong.id === song.id;
         }
 
         // Adds artistID att end of savedArtists if not already present
         if (!this.savedSongs.some(sameSongIdCB)) {
-            this.savedSongs= [...this.savedSongs, songID];
+            this.savedSongs= [...this.savedSongs, song];
         }
     }
 
-    saveAlbum(albumID) {
-        function sameAlbumIdCB(id) {
-            return id === albumID;
+    saveAlbum(album) {
+        function sameAlbumIdCB(currAlbum) {
+            return currAlbum.id === album.id;
         }
 
         // Adds artistID att end of savedArtists if not already present
         if (!this.savedAlbums.some(sameAlbumIdCB)) {
-            this.savedAlbums= [...this.savedAlbums, albumID];
+            this.savedAlbums= [...this.savedAlbums, album];
         }
     }
 
-    saveArtist(artistID) {
-        function sameArtistIdCB(id) {
-            return id === artistID;
+    saveArtist(artist) {
+        function sameArtistIdCB(currArtist) {
+            return currArtist.id === artist.id;
         }
 
         // Adds artistID att end of savedArtists if not already present
         if (!this.savedArtists.some(sameArtistIdCB)) {
-            this.savedArtists= [...this.savedArtists, artistID];
+            this.savedArtists= [...this.savedArtists, artist];
             console.log("Save artist");
             console.log(this.savedArtists);
         }

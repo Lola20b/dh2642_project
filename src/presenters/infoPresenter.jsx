@@ -25,14 +25,14 @@ export default
             
                 </div>);
 
-            function addSongToProfileACB(songID) {
-                props.model.saveSong(songID);
+            function addSongToProfileACB(song) {
+                props.model.saveSong(song);
             }
-            function addAlbumToProfileACB(albumID) {
-                props.model.saveAlbum(albumID);
+            function addAlbumToProfileACB(album) {
+                props.model.saveAlbum(album);
             }
-            function addArtistToProfileACB(artistID) {
-                props.model.saveArtist(artistID);
+            function addArtistToProfileACB(artist) {
+                props.model.saveArtist(artist);
             }
         };
     },

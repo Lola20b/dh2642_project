@@ -29,9 +29,9 @@ function InfoView(props) {
             </div>);
     }
 
-    function onSaveSongACB(evt) {props.saveSong(props.songData.song.id);};
-    function onSaveAlbumACB(evt) {props.saveAlbum(props.albumData.album.id);};
-    function onSaveArtistACB(evt) {props.saveArtist(props.artistData.artist.id);};
+    function onSaveSongACB(evt) {props.saveSong(props.songData.song);};
+    function onSaveAlbumACB(evt) {props.saveAlbum(props.albumData.album);};
+    function onSaveArtistACB(evt) {props.saveArtist(props.artistData.artist);};
 }
 
 export default InfoView;

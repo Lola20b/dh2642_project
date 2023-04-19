@@ -22,7 +22,7 @@ const router = createRouter({
     {
       path: '/Profile',
       name: 'profile',
-      component: Profile
+      component: <Profile model={myModel} />,
     },
     {
       path: '/Info',

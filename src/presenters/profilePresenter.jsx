@@ -1,10 +1,10 @@
 import ProfileView from "../views/profileView";
 
-export default{
-    name: "Profile",   // useful for Vue stacktraces
-    props: ["user"],
-    setup(props){
-
+export default 
+{
+    name: "Info",
+    props: ["model"],
+    setup(props) {
         // TODO: Implement functions below
         function ArtistRemoveACB(){
             console.log("ArtistRemoveACB");
@@ -31,13 +31,23 @@ export default{
             console.log("AlbumAddACB");
         }
 
+        function print() {
+            console.log(props.model.savedArtists)
+        }
 
-
-        return function renderACB(props){return (
-            <div>
-            {<ProfileView artists={["bob   marley", "2pac"]} songs={["woopdido", "sdfjdksfj", "sdjdsfj"]} albums={["mahatma", "ghandi"]}/>}
-            </div>
-
-        );};
+        return function renderACB() {
+            return ( <div>
+                    <ProfileView 
+                    printPres={print}
+                    savedArtists={props.model.savedArtists}
+                    savedSongs={props.model.savedSongs}
+                    savedAlbums={props.model.savedAlbums}
+                    />
+                </div>);
+        };
     },
-};
+}
+
+
+
+
