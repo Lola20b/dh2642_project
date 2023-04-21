@@ -6,11 +6,20 @@ import { getDatabase, ref, get, set } from 'https://www.gstatic.com/firebasejs/9
 
 import firebaseConfig from "/src/firebaseConfig.js";
 
+import { getAlbumDetailsFirebase, getArtistDetailsFirebase, getSongDetailsFirebase } from './geniusAPI';
+
 
 // Initialise firebase
 const app= initializeApp(firebaseConfig);
 const db= getDatabase(app);
 const rf = ref(db,"object")
+
+function observerRecap(model) {
+    function printPayloadACB(payload){
+        console.log(payload);
+    }
+    model.addObserver(printPayloadACB);
+}
 
 
 function connectModelToFirebase(model) {
@@ -41,6 +50,7 @@ function firebaseModelPromise(model) {
     }
 
     function obsACB() {
+        console.log("model", model)
         set(rf, modelToPersistence(model));
     }
 }
@@ -87,38 +97,35 @@ function persistenceToModel(persistedData={}, model) {
     }
 
     // artists
-    if(!persistedData.savedArtists) {
-        persistedData.savedArtists = [];
+    if(persistedData.savedArtists) {
+        getArtistDetailsFirebase(persistedData.savedArtists).then(setModelArtistsCB);
     }
-    getArtistDetails(persistedData.savedArtists).then(setModelArtistsCB);
 
     function setModelArtistsCB(artists) {
-        model.savedArtists = artists.sort() 
+        model.savedArtists = Object.values(artists)
         return model;
     }
 
     // Songs
-    if(!persistedData.savedSongs) {
-        persistedData.savedSongs = [];
+    if(persistedData.savedSongs) {
+        getSongDetailsFirebase(persistedData.savedSongs).then(setModelSongsCB);
     }
-    getSongDetails(persistedData.savedSongs).then(setModelSongsCB);
 
     function setModelSongsCB(songs) {
-        model.savedSongs = songs.sort() 
+        model.savedSongs = Object.values(songs);
         return model;
     }
 
     // albums
-    if(!persistedData.savedAlbums) {
-        persistedData.savedAlbums = [];
+    if(persistedData.savedAlbums) {
+        return getAlbumDetailsFirebase(persistedData.savedAlbums).then(setModelAlbumsCB);
     }
-    return getAlbumDetails(persistedData.savedAlbums).then(setModelAlbumsCB);
 
     function setModelAlbumsCB(albums) {
-        model.savedAlbums = albums.sort() 
+        model.savedAlbums = Object.values(albums); 
         return model;
     }
 }
 
 
-export {firebaseModelPromise, modelToPersistence, persistenceToModel, connectModelToFirebase};
+export {observerRecap, firebaseModelPromise, modelToPersistence, persistenceToModel, connectModelToFirebase};

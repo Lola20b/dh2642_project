@@ -19,6 +19,8 @@ class Model{
         this.savedSongs = [];
         this.savedAlbums = [];
         this.savedArtists = [];
+
+        this.observerArray = [];
     }
 
     // Set the search input
@@ -60,6 +62,7 @@ class Model{
         // Adds artistID att end of savedArtists if not already present
         if (!this.savedSongs.some(sameSongIdCB)) {
             this.savedSongs= [...this.savedSongs, song];
+            this.notifyObservers({addedSong: song})
         }
     }
 
@@ -71,6 +74,7 @@ class Model{
         // Adds artistID att end of savedArtists if not already present
         if (!this.savedAlbums.some(sameAlbumIdCB)) {
             this.savedAlbums= [...this.savedAlbums, album];
+            this.notifyObservers({addedAlbum: album})
         }
     }
 
@@ -84,6 +88,8 @@ class Model{
             this.savedArtists= [...this.savedArtists, artist];
             console.log("Save artist");
             console.log(this.savedArtists);
+            this.notifyObservers({addedArtist: artist})
+
         }
     }
 
@@ -100,11 +106,15 @@ class Model{
     }
 
     notifyObservers(payload) {
-        this.observerArray.forEach(invokeObserverCB) 
-
+        
         function invokeObserverCB(obs){
-             try{obs(payload);}catch(err){console.error(err);} 
+            console.log("test1")
+            try{obs(payload);}catch(err){console.error(err);} 
         }
+
+        console.log(this.observerArray)
+        this.observerArray.forEach(invokeObserverCB) 
+        console.log("test2")
     }
 }
 

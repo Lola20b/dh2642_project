@@ -34,8 +34,7 @@ function ProfileView(props) {
     function artistsPresentCB(artist){
         return (
             <div class="profileView_artist_name">
-                {
-                console.log(artist.name)}
+                {artist.name}
             </div>
         );
     }
