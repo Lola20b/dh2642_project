@@ -1,5 +1,5 @@
 import Sidebar from './presenters/sidebarPresenter'
-import { firebaseModelPromise } from "./firebaseModel.js";
+import { auth, connectModelToFirebase, firebaseModelPromise } from "./firebaseModel.js";
 import resolvePromise from "./resolvePromise.js";
 import {onMounted, onUnmounted} from "vue";
 import {RouterView} from "vue-router";
@@ -36,7 +36,7 @@ const router = createRouter({
       {
         path: '/Auth',
         name: 'Auth',
-        component: Auth
+        component: <div></div>
       },
     ]
   })
@@ -48,7 +48,7 @@ const VueRoot = {
         const currentfirebaseModelPromise = reactive({})
 
         function bornACB(){
-            resolvePromise(firebaseModelPromise(myModel), currentfirebaseModelPromise)
+            resolvePromise(connectModelToFirebase(myModel), currentfirebaseModelPromise)
         }
 
         function deathACB(){
@@ -59,11 +59,21 @@ const VueRoot = {
         onUnmounted(deathACB)
 
         return function renderACB(){
-            return promiseNoData(currentfirebaseModelPromise) ||
-                <div class="flexParent">
-                <div class="sidebar"><Sidebar model={myModel}/></div>
-                <div class="mainContent"><RouterView/></div>
-                </div>
+            if(myModel.user===undefined) {
+              return (
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" class="promiseStateLoading"/>
+              ); 
+            }
+            if(myModel.user===null) {
+              return <Auth auth = {auth}/>;
+            }
+            return (
+                !myModel.ready && <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" class="promiseStateLoading"/> ||
+                  <div class="flexParent">
+                    <div class="sidebar"><Sidebar model={myModel}/></div>
+                    <div class="mainContent"><RouterView/></div>
+                  </div>
+            )    
             
         }
     }

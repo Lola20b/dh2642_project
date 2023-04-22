@@ -11,7 +11,16 @@ function SidebarView(props) {
             <div>
                 <a href="/Profile">Profile</a>
             </div>
+            <div>
+                <button onClick={logoutACB}>
+                    Logout
+                </button>
+            </div>
         </div>
     );
+
+    function logoutACB() {
+        props.logout()
+    }
 }
 export default SidebarView;

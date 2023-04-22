@@ -1,6 +1,8 @@
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js'
 import { getDatabase, ref, get, set } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
+
 
 //const { getDatabase, ref, get, set, onValue}= require( "/src/teacherFirebase.js");
 
@@ -12,7 +14,8 @@ import { getAlbumDetailsFirebase, getArtistDetailsFirebase, getSongDetailsFireba
 // Initialise firebase
 const app= initializeApp(firebaseConfig);
 const db= getDatabase(app);
-const rf = ref(db,"object")
+//const rf = ref(db,"object")
+const auth = getAuth();
 
 function observerRecap(model) {
     function printPayloadACB(payload){
@@ -24,35 +27,63 @@ function observerRecap(model) {
 
 function connectModelToFirebase(model) {
     //addObserver --> if model.ready set(REF)
-    return;
+    // onAuthStateChanged --> ACB(user)
+
+    console.log("model", model)
+    
+    model.addObserver(obsACB)
+
+    //onAuthStateChanged(auth,userACB(model.user))
+
+    onAuthStateChanged(auth, userACB)
+
+    function obsACB() {
+        console.log("model", model)
+        if(model.ready && model.user) {
+            set(ref(db, 'users/' + model.user.uid), modelToPersistence(model));
+        }
+    }
+
+    function userACB(user) {
+        console.log("test")
+        if(user) {
+            console.log("hej2")
+            model.user = user;
+            firebaseModelPromise(model)
+        }
+        else {
+            console.log("hej")
+            model.user=null
+        }
+    }
+
+    
 }
 
 
 function firebaseModelPromise(model) {
-    //change to: model.ready=false, get(REF) --> persistenceToModel --> model.ready=true
+    //model.ready=false, retrieve data from firbase using get(REF) --> persistenceToModel --> model.ready=true
 
-    // 1) retrieves data from firebase using firebase get()
-    // 2) saves the data into the model (received as parameter)
-    // 3) adds a model observer that calls firebase set() and modelToPersistence()
-    return get(rf).then(persistenceToModelACB).then(addObserverACB);
+    model.ready=false;
+
+    console.log("firebasepromise")
+
+    return get(ref(db, 'users/' + model.user.uid)).then(persistenceToModelACB).then(setmodelTrueACB);
+
+    function setmodelTrueACB() {
+        model.ready=true;
+        return model;
+    }
 
     function persistenceToModelACB(dataFromFirebase) {
+        console.log("persistence to model")
+
         if(!dataFromFirebase.val()) {
             return;
         }
         return persistenceToModel(dataFromFirebase.val(),model);
     }
 
-    function addObserverACB() {
-        model.addObserver(obsACB)
-        console.log("model", model)
-        return model
-    }
-
-    function obsACB() {
-        console.log("model", model)
-        set(rf, modelToPersistence(model));
-    }
 }
 
 function modelToPersistence(model) {
@@ -128,4 +159,4 @@ function persistenceToModel(persistedData={}, model) {
 }
 
 
-export {observerRecap, firebaseModelPromise, modelToPersistence, persistenceToModel, connectModelToFirebase};
+export {observerRecap, firebaseModelPromise, modelToPersistence, persistenceToModel, connectModelToFirebase, auth};

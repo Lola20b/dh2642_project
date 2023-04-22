@@ -1,5 +1,7 @@
 import {searchMusic, getSongDetails, getLyricsDetails, getAlbumDetails, getArtistDetails} from "./geniusAPI.js";
 import resolvePromise from "./resolvePromise";
+import { getAuth, signOut } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
+
 
 // Model to keep abstract data
 
@@ -16,12 +18,18 @@ class Model{
         this.albumPromiseState = {};
         this.artistPromiseState = {};
         
+        // saved items
         this.savedSongs = [];
         this.savedAlbums = [];
         this.savedArtists = [];
 
+        // observers
         this.observerArray = [];
-    }
+
+        // authentication
+        this.ready = true;
+        this.user = null;
+    }    
 
     // Set the search input
     setSearchQuery(searchText) {
@@ -91,6 +99,15 @@ class Model{
             this.notifyObservers({addedArtist: artist})
 
         }
+    }
+
+    signOut() {
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            // An error happened.
+          });          
     }
 
     addObserver(myObserverACB) {
