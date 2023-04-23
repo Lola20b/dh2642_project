@@ -12,7 +12,7 @@ function SidebarView(props) {
                 <a href="/Profile">Profile</a>
             </div>
             <div>
-                <button onClick={logoutACB}>
+                <button class = "logoutButton" onClick={logoutACB}>
                     Logout
                 </button>
             </div>

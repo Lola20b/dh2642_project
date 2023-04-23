@@ -5,13 +5,18 @@ function loginView(props) {
 
     return (
         <div>
-            <h1>Login or create an account!</h1>
 
-            <div className="signUp">
-                <input type="text" onChange={emailInputACB} PlaceHolder="E-mail"></input>
-                <input type="password" onChange={passwordInputACB} PlaceHolder="Password"></input>
-                <button onClick={signInACB}>Login</button>
-                <button onClick={signUpACB}>Create account</button>
+            <div class="welcomeMusiceja">
+                <h1>WELCOME TO MUSICEJA</h1>
+                </div>
+            <div class="login">
+                <h1>Login or Create an Account</h1>
+                <h3>E-mail Address</h3>
+                <input class="emailInput" type="text" onChange={emailInputACB} PlaceHolder="Enter E-mail"></input>
+                <h3>Password</h3>
+                <input class="passwordInput" type="password" onChange={passwordInputACB} PlaceHolder="Enter Password"></input>
+                <button class="signInButton" onClick={signInACB}>Login</button>
+                <button class="signUpButton" onClick={signUpACB}>Create Account</button>
             </div>
 
 
@@ -31,14 +36,10 @@ function loginView(props) {
 
     function signInACB() {
         props.onSignIn(email, password)
-        console.log(password)
-        console.log(email)
     }
 
     function signUpACB() {
         props.onSignUp(email, password)
-        console.log(password)
-        console.log(email)
     }
 }
 

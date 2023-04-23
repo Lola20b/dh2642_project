@@ -17,7 +17,6 @@ export default
     setup(){
 
         //Create account
-        
         function onSignUpACB(email, password) {
             createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -32,16 +31,15 @@ export default
             });
         }
 
+        // Login
         function onSignInACB(email, password) {
             signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                console.log("hejsan")
                 // Signed in 
                 const user = userCredential.user;
                 // ...
             })
             .catch((error) => {
-                console.log("tjo")
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(error.message)

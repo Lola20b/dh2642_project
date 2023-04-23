@@ -14,7 +14,6 @@ import { getAlbumDetailsFirebase, getArtistDetailsFirebase, getSongDetailsFireba
 // Initialise firebase
 const app= initializeApp(firebaseConfig);
 const db= getDatabase(app);
-//const rf = ref(db,"object")
 const auth = getAuth();
 
 function observerRecap(model) {
@@ -45,14 +44,11 @@ function connectModelToFirebase(model) {
     }
 
     function userACB(user) {
-        console.log("test")
         if(user) {
-            console.log("hej2")
             model.user = user;
             firebaseModelPromise(model)
         }
         else {
-            console.log("hej")
             model.user=null
         }
     }
@@ -65,8 +61,6 @@ function firebaseModelPromise(model) {
     //model.ready=false, retrieve data from firbase using get(REF) --> persistenceToModel --> model.ready=true
 
     model.ready=false;
-
-    console.log("firebasepromise")
 
     return get(ref(db, 'users/' + model.user.uid)).then(persistenceToModelACB).then(setmodelTrueACB);
 

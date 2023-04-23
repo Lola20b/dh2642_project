@@ -1,5 +1,5 @@
 import Sidebar from './presenters/sidebarPresenter'
-import { auth, connectModelToFirebase, firebaseModelPromise } from "./firebaseModel.js";
+import { connectModelToFirebase, firebaseModelPromise } from "./firebaseModel.js";
 import resolvePromise from "./resolvePromise.js";
 import {onMounted, onUnmounted} from "vue";
 import {RouterView} from "vue-router";
@@ -12,8 +12,11 @@ import Profile from './presenters/profilePresenter'
 import Search from './presenters/searchPresenter'
 import Info from './presenters/infoPresenter'
 import Auth from './presenters/AuthPresenter'
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
 
 const myModel= reactive(new Model());
+
+const auth = getAuth()
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
