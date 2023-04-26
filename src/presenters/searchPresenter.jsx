@@ -30,6 +30,7 @@ export default{
         }
 
         function onTypeACB(searchType){
+            console.log(searchType)
             props.model.setSearchType(searchType);
         }
 
@@ -45,9 +46,14 @@ export default{
                 onType={onTypeACB}
                 onSearch={onSearchACB}
             />}
-
+            {/* TODO: Check if the artists, songs,albums can be passed in a cleaner fashion */}
             {promiseNoData(props.model.searchResultsPromiseState) || 
-            <SearchResultView results={props.model.searchResultsPromiseState.data} />}
+            <SearchResultView searchOption={props.model.searchInputType}
+            results={props.model.searchResultsPromiseState.data}
+            artists={props.model.searchResultsPromiseState.data.sections.find(result => result.type === "artist").hits}
+            songs={props.model.searchResultsPromiseState.data.sections.find(result => result.type === "song").hits} 
+            albums={props.model.searchResultsPromiseState.data.sections.find(result => result.type === "album").hits}
+            />}
 
             
 

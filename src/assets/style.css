@@ -118,7 +118,7 @@
 
 .searchResultViewBox {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
     background-color: rgb(83, 73, 73);
@@ -127,6 +127,13 @@
     margin: 2%;
     padding: 2%;
     max-height: 175px;
+}
+
+/* Flex box for the search results */
+.searchResultViewInnerbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .searchResultViewHeader {
