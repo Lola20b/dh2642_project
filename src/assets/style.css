@@ -128,6 +128,11 @@
     background-color: rgb(79, 104, 79);
 }
 
+.searchBar {
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
 
 /* SEARCHRESULTS */
 

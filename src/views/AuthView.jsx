@@ -17,6 +17,7 @@ function loginView(props) {
                 <input class="passwordInput" type="password" onChange={passwordInputACB} PlaceHolder="Enter Password"></input>
                 <button class="signInButton" onClick={signInACB}>Login</button>
                 <button class="signUpButton" onClick={signUpACB}>Create Account</button>
+                <h2>{console.log(props.error)}</h2>
             </div>
 
 

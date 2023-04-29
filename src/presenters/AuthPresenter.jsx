@@ -11,6 +11,8 @@ const app= initializeApp(firebaseConfig);
 
 const auth = getAuth()
 
+let err = "test"
+
 export default 
 {
     name: "Auth",
@@ -27,7 +29,9 @@ export default
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                err = errorMessage;
+                console.log(err)
+
             });
         }
 
@@ -42,8 +46,8 @@ export default
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(error.message)
-                console.log(error.code)
+                err = errorMessage;
+                console.log(err)
             });
         }
 
@@ -52,6 +56,7 @@ export default
                 {<AuthView 
                     onSignIn={onSignInACB}
                     onSignUp={onSignUpACB}
+                    error = {err}
 
                 />}
 
