@@ -1,77 +1,103 @@
 function SearchFormView(props){
-    
-    // temporary placeholder for search results
-    // TODO: Send in this data from the model
-    const res = props.results.sections[0].hits
-  
+
+    // depending on searchoption we want to render different views
     return (
             <div>
-                {res.map(resultCB)}
+                {console.log(props.songs)}
+                {function searchOptionCB(){
+                    console.log(props.searchOption)
+                    if (props.searchOption === "All"){
+                        return allView();
+                    }else if(props.searchOption === "Song"){
+                        return songView();
+                    }else if(props.searchOption === "Artist"){
+                        return artistView();
+                    }else if(props.searchOption === "Album"){
+                        return albumView();
+                    }
+                }()}
             </div>
             
     );
 
-    function songView(result){
+    function allView(){
+        // render all the views
         return (
-            <div class='searchResultViewBox'>
-                <div class="searchResultView_left">
-                    <h3 class="searchResultView_header">Song</h3>
-                    <p>{result.result.title}   By: {result.result.artist_names}</p>
-                    <a class="searchResultViewMoreInfo" href={'/Info?type=song&id='+result.result.id}>More information</a>
-                </div>
-                <div class="searchResultView_right">
-                    <img class="searchResultsViewPicture" src={result.result.song_art_image_url} alt="Song art image"/>
-                </div>
-            </div>
+            <div>
+                {songView()}
+                {artistView()}
+                {albumView()}
+            </div> 
         );
     }
 
-    function artistView(result){       
+    // These views are boxes
+    function songView(){
         return (
             <div class='searchResultViewBox'>
-                <div class="searchResultView_left">
-                    <h3 class="searchResultViewHeader">Artist</h3>
-                    <p>{result.result.name}</p>
-                    <a class="searchResultViewMoreInfo" href={'/Info?type=artist&id='+result.result.id}>More information</a>
-                </div>
-                <div class="searchResultView_right">
-                    <img class="searchResultViewPicture" src={result.result.image_url} alt="Artist Image"/>
-                </div>
-
+                <h3 class="searchResultViewHeader">Songs</h3>
+                {props.songs.map(songCB)}
             </div>
         );
+
+        function songCB(song){
+            return (
+                <div class='searchResultViewInnerbox'>
+                    <div class="searchResultView_left">
+                        <p class='searchResultTitle'>{song.result.title}   By: {song.result.artist_names}</p>
+                        <a class="searchResultViewMoreInfo" href="">More information</a>
+                    </div>
+                    <div class="searchResultView_right">
+                        <img class="searchResultsViewPicture" src={song.result.song_art_image_url} alt="Song art image"/>
+                    </div>
+                </div>
+            );
+        }
     }
 
-    function albumView(result){
+    function artistView(){       
         return (
             <div class='searchResultViewBox'>
-                <div class="searchResultView_left">
-                    <h3 class="searchResultViewHeader">Album</h3>
-                    <p>{result.result.full_title}</p>
-                    <a class="searchResultViewMoreInfo" href={'/Info?type=album&id='+result.result.id}>More information</a>
-                </div>
-                <div class="searchResultView_right">
-                    <img class="searchResultViewPicture" src={result.result.cover_art_thumbnail_url} alt="Album art Image"/>
-                </div>
-
+                <h3 class="searchResultViewHeader">Artists</h3>
+                {props.artists.map(artistCB)}
             </div>
         );
+
+        function artistCB(artist){
+            return (
+                <div class='searchResultViewInnerbox'>
+                    <div class="searchResultView_left">
+                        <p class='searchResultTitle'>{artist.result.name}</p>
+                        <a class="searchResultViewMoreInfo" href="">More information</a>
+                    </div>
+                    <div class="searchResultView_right">
+                        <img class="searchResultsViewPicture" src={artist.result.image_url} alt="Artist Image"/>
+                    </div>
+                </div>
+            );
+        }
     }
 
+    function albumView(){
+        return (
+            <div class='searchResultViewBox'>
+                <h3 class="searchResultViewHeader">Albums</h3>
+                {props.albums.map(albumCB)}
+            </div>
+        );
 
-    function resultCB(result){
-        // check for type of result, and render appropriate component
-        if(result.type === "song"){
-            return songView(result);
-        }
-        else if(result.type === "artist"){
-            return artistView(result);
-        }
-        else if(result.type === "album"){
-            return albumView(result);
-        }
-        else{
-            return <div>Unknown</div>
+        function albumCB(album){
+            return (
+                <div class="searchResultViewInnerbox">
+                    <div class="searchResultView_left">
+                        <p class='searchResultTitle'>{album.result.full_title}</p>
+                        <a class="searchResultViewMoreInfo" href="">More information</a>
+                    </div>
+                    <div class="searchResultView_right">
+                        <img class="searchResultsViewPicture" src={album.result.cover_art_thumbnail_url} alt="Album art Image"/>
+                    </div>
+                </div>
+            );
         }
     }
 
