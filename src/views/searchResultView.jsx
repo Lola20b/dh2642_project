@@ -35,7 +35,7 @@ function SearchFormView(props){
     function songView(){
         return (
             <div class='searchResultViewBox'>
-                <h3 class="searchResultView_header">Songs</h3>
+                <h3 class="searchResultViewHeader">Songs</h3>
                 {props.songs.map(songCB)}
             </div>
         );
@@ -44,7 +44,7 @@ function SearchFormView(props){
             return (
                 <div class='searchResultViewInnerbox'>
                     <div class="searchResultView_left">
-                        <p>{song.result.title}   By: {song.result.artist_names}</p>
+                        <p class='searchResultTitle'>{song.result.title}   By: {song.result.artist_names}</p>
                         <a class="searchResultViewMoreInfo" href="">More information</a>
                     </div>
                     <div class="searchResultView_right">
@@ -58,7 +58,7 @@ function SearchFormView(props){
     function artistView(){       
         return (
             <div class='searchResultViewBox'>
-                <h3 class="searchResultView_header">Artists</h3>
+                <h3 class="searchResultViewHeader">Artists</h3>
                 {props.artists.map(artistCB)}
             </div>
         );
@@ -67,7 +67,7 @@ function SearchFormView(props){
             return (
                 <div class='searchResultViewInnerbox'>
                     <div class="searchResultView_left">
-                        <p>{artist.result.name}</p>
+                        <p class='searchResultTitle'>{artist.result.name}</p>
                         <a class="searchResultViewMoreInfo" href="">More information</a>
                     </div>
                     <div class="searchResultView_right">
@@ -81,7 +81,7 @@ function SearchFormView(props){
     function albumView(){
         return (
             <div class='searchResultViewBox'>
-                <h3 class="searchResultView_header">Albums</h3>
+                <h3 class="searchResultViewHeader">Albums</h3>
                 {props.albums.map(albumCB)}
             </div>
         );
@@ -90,7 +90,7 @@ function SearchFormView(props){
             return (
                 <div class="searchResultViewInnerbox">
                     <div class="searchResultView_left">
-                        <p>{album.result.full_title}</p>
+                        <p class='searchResultTitle'>{album.result.full_title}</p>
                         <a class="searchResultViewMoreInfo" href="">More information</a>
                     </div>
                     <div class="searchResultView_right">

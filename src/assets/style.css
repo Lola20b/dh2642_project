@@ -75,8 +75,11 @@
     color: black;
 }
 
+.searchBarText {
+    margin: 2%;
+}
 .searchInput {
-    margin: 2% 2% 2% 0%;
+    margin: 2% 2% 2% 2%;
     padding: 5px 10px;
     border: none;
     display: inline-block;
@@ -138,6 +141,12 @@
     width: 100%;
     padding: 0px;
     gap: 10px;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    margin: 0px;
+    text-align: center;
+
 }
 
 .searchResultView_left {
@@ -158,6 +167,25 @@
     max-height: 100px;
 
       
+}
+
+.searchResultTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* should be aligned to bottom */
+.searchResultViewMoreInfo {
+    margin: 0px;
+    padding: 0px;
+    text-align: bottom;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* picture should be as far right as possible*/
