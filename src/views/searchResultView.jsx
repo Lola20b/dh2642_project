@@ -17,7 +17,7 @@ function SearchFormView(props){
                 <div class="searchResultView_left">
                     <h3 class="searchResultView_header">Song</h3>
                     <p>{result.result.title}   By: {result.result.artist_names}</p>
-                    <a class="searchResultViewMoreInfo" href="">More information</a>
+                    <a class="searchResultViewMoreInfo" href={'/Info?type=song&id='+result.result.id}>More information</a>
                 </div>
                 <div class="searchResultView_right">
                     <img class="searchResultsViewPicture" src={result.result.song_art_image_url} alt="Song art image"/>
@@ -32,7 +32,7 @@ function SearchFormView(props){
                 <div class="searchResultView_left">
                     <h3 class="searchResultViewHeader">Artist</h3>
                     <p>{result.result.name}</p>
-                    <a class="searchResultViewMoreInfo" href="">More information</a>
+                    <a class="searchResultViewMoreInfo" href={'/Info?type=artist&id='+result.result.id}>More information</a>
                 </div>
                 <div class="searchResultView_right">
                     <img class="searchResultViewPicture" src={result.result.image_url} alt="Artist Image"/>
@@ -48,7 +48,7 @@ function SearchFormView(props){
                 <div class="searchResultView_left">
                     <h3 class="searchResultViewHeader">Album</h3>
                     <p>{result.result.full_title}</p>
-                    <a class="searchResultViewMoreInfo" href="">More information</a>
+                    <a class="searchResultViewMoreInfo" href={'/Info?type=album&id='+result.result.id}>More information</a>
                 </div>
                 <div class="searchResultView_right">
                     <img class="searchResultViewPicture" src={result.result.cover_art_thumbnail_url} alt="Album art Image"/>
