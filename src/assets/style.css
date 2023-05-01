@@ -119,21 +119,19 @@
 .searchResultViewBox {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
+    overflow-y: auto;
     background-color: rgb(83, 73, 73);
     width: 100%;
     border: 1px solid black;
     margin: 2%;
-    padding: 2%;
-    max-height: 175px;
 }
 
 /* Flex box for the search results */
 .searchResultViewInnerbox {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    border: 1px solid grey;
+    padding: 2%;
 }
 
 .searchResultViewHeader {
@@ -165,10 +163,6 @@
 /* picture should be as far right as possible*/
 .searchResultViewPicture { 
     position: absolute;
-    top: 0;
-    right: 0;
-    max-height: 100px;
-    max-width: 100px;
     border: 1px solid black;
 }
 

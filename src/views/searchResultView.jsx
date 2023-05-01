@@ -42,7 +42,7 @@ function SearchFormView(props){
 
         function songCB(song){
             return (
-                <div>
+                <div class='searchResultViewInnerbox'>
                     <div class="searchResultView_left">
                         <p>{song.result.title}   By: {song.result.artist_names}</p>
                         <a class="searchResultViewMoreInfo" href="">More information</a>
@@ -65,13 +65,13 @@ function SearchFormView(props){
 
         function artistCB(artist){
             return (
-                <div>
+                <div class='searchResultViewInnerbox'>
                     <div class="searchResultView_left">
                         <p>{artist.result.name}</p>
                         <a class="searchResultViewMoreInfo" href="">More information</a>
                     </div>
                     <div class="searchResultView_right">
-                        <img class="searchResultViewPicture" src={artist.result.image_url} alt="Artist Image"/>
+                        <img class="searchResultsViewPicture" src={artist.result.image_url} alt="Artist Image"/>
                     </div>
                 </div>
             );
@@ -88,13 +88,13 @@ function SearchFormView(props){
 
         function albumCB(album){
             return (
-                <div class="searchResultView_innerbox">
+                <div class="searchResultViewInnerbox">
                     <div class="searchResultView_left">
                         <p>{album.result.full_title}</p>
                         <a class="searchResultViewMoreInfo" href="">More information</a>
                     </div>
                     <div class="searchResultView_right">
-                        <img class="searchResultViewPicture" src={album.result.cover_art_thumbnail_url} alt="Album art Image"/>
+                        <img class="searchResultsViewPicture" src={album.result.cover_art_thumbnail_url} alt="Album art Image"/>
                     </div>
                 </div>
             );
