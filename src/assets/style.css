@@ -90,8 +90,11 @@
     color: black;
 }
 
+.searchBarText {
+    margin: 2%;
+}
 .searchInput {
-    margin: 2% 2% 2% 0%;
+    margin: 2% 2% 2% 2%;
     padding: 5px 10px;
     border: none;
     display: inline-block;
@@ -138,21 +141,32 @@
 
 .searchResultViewBox {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    box-sizing: border-box;
+    flex-direction: column;
+    overflow-y: auto;
     background-color: rgb(83, 73, 73);
     width: 100%;
     border: 1px solid black;
     margin: 2%;
+}
+
+/* Flex box for the search results */
+.searchResultViewInnerbox {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid grey;
     padding: 2%;
-    max-height: 175px;
 }
 
 .searchResultViewHeader {
     width: 100%;
     padding: 0px;
     gap: 10px;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    margin: 0px;
+    text-align: center;
+
 }
 
 .searchResultView_left {
@@ -175,13 +189,28 @@
       
 }
 
+.searchResultTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* should be aligned to bottom */
+.searchResultViewMoreInfo {
+    margin: 0px;
+    padding: 0px;
+    text-align: bottom;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 /* picture should be as far right as possible*/
 .searchResultViewPicture { 
     position: absolute;
-    top: 0;
-    right: 0;
-    max-height: 100px;
-    max-width: 100px;
     border: 1px solid black;
 }
 

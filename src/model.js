@@ -17,6 +17,7 @@ class Model{
         this.lyricsPromiseState = {};
         this.albumPromiseState = {};
         this.artistPromiseState = {};
+        this.searchInputType = "All";
         
         // saved items
         this.savedSongs = [];
@@ -38,7 +39,7 @@ class Model{
 
     // Set the search type
     setSearchType(searchType) {
-        //this.searchInput.type = searchType;
+        this.searchInputType = searchType;
     }
 
     // Do the search
