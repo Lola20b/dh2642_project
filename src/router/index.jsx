@@ -4,9 +4,6 @@ import Profile from '../presenters/profilePresenter'
 import Search from '../presenters/searchPresenter'
 import Model from '../model.js'
 import Info from '../presenters/infoPresenter'
-import Song from '../presenters/songPresenter'
-import Artist from '../presenters/artistPresenter'
-import Album from '../presenters/albumPresenter'
 
 // Model
 const myModel= reactive(new Model());
