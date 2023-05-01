@@ -34,7 +34,8 @@ const router = createRouter({
       {
         path: '/Info',
         name: 'info',
-        component: <Info model={myModel} />
+        component: Info,
+        props: (route) => ({ type: route.query.type ,id: route.query.id , model: myModel}), 
       },
       {
         path: '/Auth',

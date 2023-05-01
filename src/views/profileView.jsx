@@ -50,7 +50,7 @@ function ProfileView(props) {
     function albumsPresentCB(album){
         return (
             <div class="profileView_album_name">
-                {album.title}
+                {album.name}
             </div>
         );
     }

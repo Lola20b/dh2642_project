@@ -32,7 +32,8 @@ export default
         }
 
         function print() {
-            console.log(props.model.savedArtists)
+            console.log("model")
+            console.log(props.model)
         }
 
         return function renderACB() {

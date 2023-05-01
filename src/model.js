@@ -67,7 +67,7 @@ class Model{
             return currSong.id === song.id;
         }
 
-        // Adds artistID att end of savedArtists if not already present
+        // Adds song att end of savedArtists if not already present
         if (!this.savedSongs.some(sameSongIdCB)) {
             this.savedSongs= [...this.savedSongs, song];
             this.notifyObservers({addedSong: song})
@@ -79,7 +79,7 @@ class Model{
             return currAlbum.id === album.id;
         }
 
-        // Adds artistID att end of savedArtists if not already present
+        // Adds album att end of savedArtists if not already present
         if (!this.savedAlbums.some(sameAlbumIdCB)) {
             this.savedAlbums= [...this.savedAlbums, album];
             this.notifyObservers({addedAlbum: album})
@@ -91,7 +91,7 @@ class Model{
             return currArtist.id === artist.id;
         }
 
-        // Adds artistID att end of savedArtists if not already present
+        // Adds artist att end of savedArtists if not already present
         if (!this.savedArtists.some(sameArtistIdCB)) {
             this.savedArtists= [...this.savedArtists, artist];
             console.log("Save artist");
@@ -125,13 +125,11 @@ class Model{
     notifyObservers(payload) {
         
         function invokeObserverCB(obs){
-            console.log("test1")
             try{obs(payload);}catch(err){console.error(err);} 
         }
 
         console.log(this.observerArray)
         this.observerArray.forEach(invokeObserverCB) 
-        console.log("test2")
     }
 }
 

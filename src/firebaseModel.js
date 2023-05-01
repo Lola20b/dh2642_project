@@ -8,7 +8,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 
 import firebaseConfig from "/src/firebaseConfig.js";
 
-import { getAlbumDetailsFirebase, getArtistDetailsFirebase, getSongDetailsFirebase } from './geniusAPI';
+import { getSongDetails, getArtistDetails, getAlbumDetails, getAlbumDetailsFirebase, getArtistDetailsFirebase, getSongDetailsFirebase } from './geniusAPI';
 
 
 // Initialise firebase
@@ -87,6 +87,7 @@ function modelToPersistence(model) {
 
     // save artists
     if(model.savedArtists) {
+        console.log("wohoo")
         persistedData.savedArtists = model.savedArtists.map(getIDCB).sort();
     } else {
         persistedData.savedArtists = [];
@@ -112,6 +113,7 @@ function modelToPersistence(model) {
         if(!obj) {
             return null;
         }
+        console.log(obj.id)
         return obj.id;
     }           
 }
@@ -123,31 +125,34 @@ function persistenceToModel(persistedData={}, model) {
 
     // artists
     if(persistedData.savedArtists) {
-        getArtistDetailsFirebase(persistedData.savedArtists).then(setModelArtistsCB);
+        let artists = persistedData.savedArtists.map(getArtistDetailsFirebase);
+        artists.map(setModelArtistsCB)
     }
 
-    function setModelArtistsCB(artists) {
-        model.savedArtists = Object.values(artists)
+    function setModelArtistsCB(artist) {
+        artist.then((value) => model.savedArtists.push(value.artist))
         return model;
     }
 
     // Songs
     if(persistedData.savedSongs) {
-        getSongDetailsFirebase(persistedData.savedSongs).then(setModelSongsCB);
+        let songs = persistedData.savedSongs.map(getSongDetailsFirebase);
+        songs.map(setModelSongsCB)
     }
 
-    function setModelSongsCB(songs) {
-        model.savedSongs = Object.values(songs);
+    function setModelSongsCB(song) {
+        song.then((value) => model.savedSongs.push(value.song))
         return model;
     }
 
     // albums
     if(persistedData.savedAlbums) {
-        return getAlbumDetailsFirebase(persistedData.savedAlbums).then(setModelAlbumsCB);
+        let albumbs = persistedData.savedAlbums.map(getAlbumDetailsFirebase);
+        albumbs.map(setModelAlbumsCB)
     }
 
-    function setModelAlbumsCB(albums) {
-        model.savedAlbums = Object.values(albums); 
+    function setModelAlbumsCB(album) {
+        album.then((value) => model.savedAlbums.push(value.album))
         return model;
     }
 }
