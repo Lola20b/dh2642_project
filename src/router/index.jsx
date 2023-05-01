@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { reactive } from "vue";
 import Profile from '../presenters/profilePresenter'
-import Sidebar from '../presenters/sidebarPresenter'
 import Search from '../presenters/searchPresenter'
 import Model from '../model.js'
 import Info from '../presenters/infoPresenter'
+import Song from '../presenters/songPresenter'
+import Artist from '../presenters/artistPresenter'
+import Album from '../presenters/albumPresenter'
 
 // Model
 const myModel= reactive(new Model());
@@ -26,7 +28,8 @@ const router = createRouter({
     {
       path: '/Info',
       name: 'info',
-      component: <Info model={myModel} />
+      component: Info,
+      props: (route) => ({ type: route.query.type ,id: route.query.id , model: myModel}), 
     },
   ]
 })
