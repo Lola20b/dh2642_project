@@ -33,21 +33,21 @@ export default
                 return ( <div>
                     
                     {promiseNoData(props.model.artistPromiseState) || 
-                    <InfoView type={"artist"} artistData = {props.model.artistPromiseState.data} saveArtist={addArtistToProfileACB}/>}
+                    <InfoView type="artist" artistData = {props.model.artistPromiseState.data} saveArtist={addArtistToProfileACB}/>}
                 
                     </div>);
             } else if (props.type === "album") {
                 return ( <div>
                               
                     {promiseNoData(props.model.albumPromiseState) || 
-                    <AlbumView albumData = {props.model.albumPromiseState.data} saveAlbum={addAlbumToProfileACB}/>}
+                    <InfoView type="album" albumData = {props.model.albumPromiseState.data} saveAlbum={addAlbumToProfileACB}/>}
 
                     </div>);
             }  else if (props.type === "song") {
                 return ( <div>
                 
                     {promiseNoData(props.model.songPromiseState) || promiseNoData(props.model.lyricsPromiseState) || 
-                    <SongView songData = {props.model.songPromiseState.data} lyricsData= {props.model.lyricsPromiseState.data} saveSong={addSongToProfileACB}/>}
+                    <InfoView type="song" songData = {props.model.songPromiseState.data} lyricsData= {props.model.lyricsPromiseState.data} saveSong={addSongToProfileACB}/>}
                 
                     </div>);
             }
