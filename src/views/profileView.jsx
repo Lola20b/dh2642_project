@@ -13,24 +13,28 @@ function ProfileView(props) {
                 </tr>
                 <tr>
                     <td>
-                        {props.artists.map(artistsPresentCB)}
+                        {props.savedArtists.map(artistsPresentCB)}
                     </td>
                     <td>
-                        {props.songs.map(songsPresentCB)}
+                        {props.savedSongs.map(songsPresentCB)}
                     </td>
                     <td>
-                        {props.albums.map(albumsPresentCB)}
-                    </td>
+                        {props.savedAlbums.map(albumsPresentCB)}
+                    </td> 
+                    {print()}
                 </tr>
             </table>
         </div>
     );
         
 
+    function print() {
+        props.printPres()
+    }
     function artistsPresentCB(artist){
         return (
             <div class="profileView_artist_name">
-                {artist}
+                {artist.name}
             </div>
         );
     }
@@ -38,7 +42,7 @@ function ProfileView(props) {
     function songsPresentCB(song){
         return (
             <div class="profileView_song_name">
-                {song}
+                {song.title}
             </div>
         );
     }
@@ -46,7 +50,7 @@ function ProfileView(props) {
     function albumsPresentCB(album){
         return (
             <div class="profileView_album_name">
-                {album}
+                {album.title}
             </div>
         );
     }

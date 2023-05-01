@@ -1,5 +1,7 @@
 import {searchMusic, getSongDetails, getLyricsDetails, getAlbumDetails, getArtistDetails} from "./geniusAPI.js";
 import resolvePromise from "./resolvePromise";
+import { getAuth, signOut } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
+
 
 // Model to keep abstract data
 
@@ -16,10 +18,18 @@ class Model{
         this.albumPromiseState = {};
         this.artistPromiseState = {};
         
+        // saved items
         this.savedSongs = [];
         this.savedAlbums = [];
         this.savedArtists = [];
-    }
+
+        // observers
+        this.observerArray = [];
+
+        // authentication
+        this.ready = true;
+        this.user = null;
+    }    
 
     // Set the search input
     setSearchQuery(searchText) {
@@ -52,39 +62,76 @@ class Model{
         resolvePromise(getArtistDetails(artistParams), this.artistPromiseState)
     }
 
-    saveSong(songID) {
-        function sameSongIdCB(id) {
-            return id === songID;
+    saveSong(song) {
+        function sameSongIdCB(currSong) {
+            return currSong.id === song.id;
         }
 
         // Adds artistID att end of savedArtists if not already present
         if (!this.savedSongs.some(sameSongIdCB)) {
-            this.savedSongs= [...this.savedSongs, songID];
+            this.savedSongs= [...this.savedSongs, song];
+            this.notifyObservers({addedSong: song})
         }
     }
 
-    saveAlbum(albumID) {
-        function sameAlbumIdCB(id) {
-            return id === albumID;
+    saveAlbum(album) {
+        function sameAlbumIdCB(currAlbum) {
+            return currAlbum.id === album.id;
         }
 
         // Adds artistID att end of savedArtists if not already present
         if (!this.savedAlbums.some(sameAlbumIdCB)) {
-            this.savedAlbums= [...this.savedAlbums, albumID];
+            this.savedAlbums= [...this.savedAlbums, album];
+            this.notifyObservers({addedAlbum: album})
         }
     }
 
-    saveArtist(artistID) {
-        function sameArtistIdCB(id) {
-            return id === artistID;
+    saveArtist(artist) {
+        function sameArtistIdCB(currArtist) {
+            return currArtist.id === artist.id;
         }
 
         // Adds artistID att end of savedArtists if not already present
         if (!this.savedArtists.some(sameArtistIdCB)) {
-            this.savedArtists= [...this.savedArtists, artistID];
+            this.savedArtists= [...this.savedArtists, artist];
             console.log("Save artist");
             console.log(this.savedArtists);
+            this.notifyObservers({addedArtist: artist})
+
         }
+    }
+
+    signOut() {
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            // An error happened.
+          });          
+    }
+
+    addObserver(myObserverACB) {
+        this.observerArray=[...this.observerArray, myObserverACB];
+    }
+    
+    removeObserver(myObserverACB) {
+        this.observerArray=this.observerArray.filter(removeObserverCB)
+
+        function removeObserverCB(elem){
+            return elem!==myObserverACB;
+        }
+    }
+
+    notifyObservers(payload) {
+        
+        function invokeObserverCB(obs){
+            console.log("test1")
+            try{obs(payload);}catch(err){console.error(err);} 
+        }
+
+        console.log(this.observerArray)
+        this.observerArray.forEach(invokeObserverCB) 
+        console.log("test2")
     }
 }
 

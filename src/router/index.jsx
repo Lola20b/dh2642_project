@@ -4,6 +4,7 @@ import Profile from '../presenters/profilePresenter'
 import Search from '../presenters/searchPresenter'
 import Model from '../model.js'
 import Info from '../presenters/infoPresenter'
+import Auth from '../presenters/AuthPresenter'
 
 // Model
 const myModel= reactive(new Model());
@@ -20,13 +21,18 @@ const router = createRouter({
     {
       path: '/Profile',
       name: 'profile',
-      component: Profile
+      component: <Profile model={myModel} />,
     },
     {
       path: '/Info',
       name: 'info',
       component: Info,
       props: (route) => ({ type: route.query.type ,id: route.query.id , model: myModel}), 
+    },
+    {
+      path: '/Auth',
+      name: 'Auth',
+      component: Auth
     },
   ]
 })
