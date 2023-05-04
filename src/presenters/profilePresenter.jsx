@@ -6,7 +6,8 @@ export default
     props: ["model"],
     setup(props) {
         // TODO: Implement functions below
-        function ArtistRemoveACB(){
+        function ArtistRemoveACB(artist){
+            props.model.removeArtist(artist);
             console.log("ArtistRemoveACB");
         }
 
@@ -15,7 +16,8 @@ export default
         }
 
         // same but for songs and albums
-        function SongRemoveACB(){
+        function SongRemoveACB(song){
+            props.model.removeSong(song);
             console.log("SongRemoveACB");
         }
 
@@ -23,7 +25,8 @@ export default
             console.log("SongAddACB");
         }
 
-        function AlbumRemoveACB(){
+        function AlbumRemoveACB(album){
+            props.model.removeAlbum(album);
             console.log("AlbumRemoveACB");
         }
 
@@ -43,6 +46,10 @@ export default
                     savedArtists={props.model.savedArtists}
                     savedSongs={props.model.savedSongs}
                     savedAlbums={props.model.savedAlbums}
+
+                    onWishRemoveArtist={ArtistRemoveACB}
+                    onWishRemoveSong={SongRemoveACB}
+                    onWishRemoveAlbum={AlbumRemoveACB}
                     />
                 </div>);
         };

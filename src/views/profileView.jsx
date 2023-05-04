@@ -35,24 +35,33 @@ function ProfileView(props) {
         return (
             <div class="profileView_artist_name">
                 {artist.name}
+                <button onClick={clickRemoveArtistACB}>Remove</button>
             </div>
         );
+
+        function clickRemoveArtistACB(evt) { props.onWishRemoveArtist(artist);}
     }
 
     function songsPresentCB(song){
         return (
             <div class="profileView_song_name">
                 {song.title}
+                <button onClick={clickRemoveSongACB}>Remove</button>
             </div>
         );
+
+        function clickRemoveSongACB(evt) { props.onWishRemoveSong(song);}
     }
 
     function albumsPresentCB(album){
         return (
             <div class="profileView_album_name">
                 {album.name}
+                <button onClick={clickRemoveAlbumACB}>Remove</button>
             </div>
         );
+
+        function clickRemoveAlbumACB(evt) { props.onWishRemoveAlbum(album);}
     }
     
 }
