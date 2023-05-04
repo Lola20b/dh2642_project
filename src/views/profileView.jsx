@@ -34,7 +34,7 @@ function ProfileView(props) {
     function artistsPresentCB(artist){
         return (
             <div class="profileView_artist_name">
-                {artist.name}
+                <a  href={'/Info?type=artist&id='+artist.id}>{artist.name}</a>
                 <button onClick={clickRemoveArtistACB}>Remove</button>
             </div>
         );
@@ -45,7 +45,7 @@ function ProfileView(props) {
     function songsPresentCB(song){
         return (
             <div class="profileView_song_name">
-                {song.title}
+                <a  href={'/Info?type=song&id='+song.id}>{song.title}</a>
                 <button onClick={clickRemoveSongACB}>Remove</button>
             </div>
         );
@@ -56,7 +56,7 @@ function ProfileView(props) {
     function albumsPresentCB(album){
         return (
             <div class="profileView_album_name">
-                {album.name}
+                <a  href={'/Info?type=album&id='+album.id}>{album.name}</a>
                 <button onClick={clickRemoveAlbumACB}>Remove</button>
             </div>
         );
