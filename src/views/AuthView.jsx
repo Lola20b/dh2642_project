@@ -17,7 +17,7 @@ function loginView(props) {
                 <input class="passwordInput" type="password" onChange={passwordInputACB} PlaceHolder="Enter Password"></input>
                 <button class="signInButton" onClick={signInACB}>Login</button>
                 <button class="signUpButton" onClick={signUpACB}>Create Account</button>
-                <h2>{console.log(props.error)}</h2>
+                <h3>{props.error}</h3>
             </div>
 
 
@@ -40,7 +40,8 @@ function loginView(props) {
     }
 
     function signUpACB() {
-        props.onSignUp(email, password)
+        props.onSignUp(email, password);
+
     }
 }
 
