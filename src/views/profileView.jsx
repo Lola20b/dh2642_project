@@ -4,25 +4,25 @@ function ProfileView(props) {
         // a bottom row that has a list of the artists, songs, and albums.
         // Use placeholder css-classes for now and then these will be styled later. The lists of artists, songs, and albums
         // will be filled in using the _presentCB functions below. 
-        <div class="test">
+        <div class="profileTest">
+
             <table class="profileTable">
-                <tr>
-                    <th class="tableTitle">Artists</th>
-                    <th class="tableTitle">Songs</th>
-                    <th class="tableTitle">Albums</th>
-                </tr>
-                <tr>
-                    <td>
-                        {props.savedArtists.map(artistsPresentCB)}
-                    </td>
-                    <td>
-                        {props.savedSongs.map(songsPresentCB)}
-                    </td>
-                    <td>
-                        {props.savedAlbums.map(albumsPresentCB)}
-                    </td> 
-                    {print()}
-                </tr>
+                <thead class="tableTitle">Artists</thead>
+                <tbody>
+                    {props.savedArtists.map(artistsPresentCB)}
+                </tbody>
+            </table>
+            <table class="profileTable">
+                <thead class="tableTitle">Songs</thead>
+                <tbody>
+                {props.savedSongs.map(songsPresentCB)}
+                </tbody>
+            </table>
+            <table class="profileTable">
+                <thead class="tableTitle">Albums</thead>
+                <tbody>
+                {props.savedAlbums.map(albumsPresentCB)}
+                </tbody>
             </table>
         </div>
     );
@@ -33,26 +33,35 @@ function ProfileView(props) {
     }
     function artistsPresentCB(artist){
         return (
-            <div class="profileView_artist_name">
-                {artist.name}
-            </div>
+            <tr class="tableRow">
+                <a  href={'/Info?type=artist&id='+artist.id}>{artist.name}</a>
+                <button class="removeButton" onClick={clickRemoveArtistACB}>Remove</button>
+            </tr>
         );
+
+        function clickRemoveArtistACB(evt) { props.onWishRemoveArtist(artist);}
     }
 
     function songsPresentCB(song){
         return (
-            <div class="profileView_song_name">
-                {song.title}
-            </div>
+            <tr class="tableRow">
+                <a  href={'/Info?type=song&id='+song.id}>{song.title}</a>
+                <button class="removeButton" onClick={clickRemoveSongACB}>Remove</button>
+            </tr>
         );
+
+        function clickRemoveSongACB(evt) { props.onWishRemoveSong(song);}
     }
 
     function albumsPresentCB(album){
         return (
-            <div class="profileView_album_name">
-                {album.name}
-            </div>
+            <tr class="tableRow">
+                <a  href={'/Info?type=album&id='+album.id}>{album.name}</a>
+                <button class="removeButton" onClick={clickRemoveAlbumACB}>Remove</button>
+            </tr>
         );
+
+        function clickRemoveAlbumACB(evt) { props.onWishRemoveAlbum(album);}
     }
     
 }

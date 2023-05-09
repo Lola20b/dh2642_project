@@ -102,6 +102,33 @@ class Model{
         }
     }
 
+    removeSong(song) {
+        function diffSongIdCB(currSong) {
+            return currSong.id !== song.id;
+        }
+
+        this.savedSongs = this.savedSongs.filter(diffSongIdCB);
+        this.notifyObservers({removedSong: song})
+    }
+
+    removeAlbum(album) {
+        function diffAlbumIdCB(currAlbum) {
+            return currAlbum.id !== album.id;
+        }
+
+        this.savedAlbums = this.savedAlbums.filter(diffAlbumIdCB);
+        this.notifyObservers({removedAlbum: album})
+    }
+
+    removeArtist(artist) {
+        function diffArtistIdCB(currArtist) {
+            return currArtist.id !== artist.id;
+        }
+
+        this.savedArtists = this.savedArtists.filter(diffArtistIdCB);
+        this.notifyObservers({removedArtist: artist})
+    }
+
     signOut() {
         const auth = getAuth();
         signOut(auth).then(() => {
