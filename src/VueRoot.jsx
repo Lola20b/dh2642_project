@@ -65,14 +65,14 @@ const VueRoot = {
         return function renderACB(){
             if(myModel.user===undefined) {
               return (
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" class="promiseStateLoading"/>
+                <img src="https://cdn.shopify.com/s/files/1/0611/9509/2191/t/2/assets/loading.gif?v=157493769327766696621636595199" class="promiseStateLoading"/>
               ); 
             }
             if(myModel.user===null) {
               return <Auth auth = {auth}/>;
             }
             return (
-                !myModel.ready && <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" class="promiseStateLoading"/> ||
+                !myModel.ready && <img src="https://cdn.shopify.com/s/files/1/0611/9509/2191/t/2/assets/loading.gif?v=157493769327766696621636595199" class="promiseStateLoading"/> ||
                   <div class="flexParent">
                     <div class="sidebar"><Sidebar model={myModel}/></div>
                     <div class="mainContent"><RouterView/></div>

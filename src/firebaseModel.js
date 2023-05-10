@@ -1,6 +1,6 @@
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js'
-import { getDatabase, ref, get, set } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js'
+import { getDatabase, ref, get, set, update } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js'
 
 
@@ -40,6 +40,7 @@ function connectModelToFirebase(model) {
         console.log("model", model)
         if(model.ready && model.user) {
             set(ref(db, 'users/' + model.user.uid), modelToPersistence(model));
+            //update(ref(db), modelToPersistenceLikes(model));
         }
     }
 
@@ -87,7 +88,6 @@ function modelToPersistence(model) {
 
     // save artists
     if(model.savedArtists) {
-        console.log("wohoo")
         persistedData.savedArtists = model.savedArtists.map(getIDCB).sort();
     } else {
         persistedData.savedArtists = [];
@@ -117,6 +117,57 @@ function modelToPersistence(model) {
         return obj.id;
     }           
 }
+
+function modelToPersistenceLikes(model) {
+    const persistedData = {likedArtists: [], likedAlbums: [], likedSongs: []};
+
+    // save liked artists
+    if(model.likedArtists) {
+        persistedData.likedArtists = model.likedArtists.map(getArtistIDCB).sort();
+    } else {
+        persistedData.savedArtists = [];
+    }
+
+    // save liked albums
+    if(model.likedAlbums) {
+        persistedData.likedAlbums = model.likedAlbums.map(getAlbumIDCB).sort();
+    } else {
+        persistedData.likedAlbums = [];
+    }
+
+            
+    // save liked songs
+    if(model.likedSongs) {
+        persistedData.likedSongs = model.likedSongs.map(getSongIDCB).sort();
+    } else {
+        persistedData.likedSongs = [];
+    }
+
+    return persistedData;
+
+    function getSongIDCB(song) {
+        if(!song) {
+            return null;
+        }
+        return song;
+    }        
+    
+    function getAlbumIDCB(album) {
+        if(!album) {
+            return null;
+        }
+        return album;
+    } 
+
+    function getArtistIDCB(artist) {
+        if(!artist) {
+            return null;
+        }
+        return artist;
+    } 
+
+}
+
 
 function persistenceToModel(persistedData={}, model) {
     if (!persistedData) {
@@ -155,7 +206,18 @@ function persistenceToModel(persistedData={}, model) {
         album.then((value) => model.savedAlbums.push(value.album))
         return model;
     }
+
+    // // Liked artists, songs and albums
+    // if(persistedData.likedArtists) {
+    //     model.likedAlbums = persistedData.likedArtists
+    // }
+    // if(persistedData.savedArtists) {
+    //     model.likedArtists = persistedData.likedArtists
+    // }
+    // if(persistedData.likedSongs) {
+    //     model.likedSongs = persistedData.likedSongs
+    // }
 }
 
 
-export {observerRecap, firebaseModelPromise, modelToPersistence, persistenceToModel, connectModelToFirebase, auth};
+export {observerRecap, firebaseModelPromise, modelToPersistence, modelToPersistenceLikes, persistenceToModel, connectModelToFirebase, auth};

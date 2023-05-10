@@ -4,6 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js'
 
 import firebaseConfig from "../firebaseConfig.js";
+import { reactive, watchEffect, ref } from "vue";
 
 
 // Initialise firebase
@@ -11,12 +12,12 @@ const app= initializeApp(firebaseConfig);
 
 const auth = getAuth()
 
-let err = "test"
-
 export default 
 {
     name: "Auth",
     setup(){
+
+        let err = reactive({message: ""})
 
         //Create account
         function onSignUpACB(email, password) {
@@ -29,9 +30,8 @@ export default
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                err = errorMessage;
+                err.message = errorMessage;
                 console.log(err)
-
             });
         }
 
@@ -46,18 +46,18 @@ export default
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                err = errorMessage;
+                err.message = errorMessage;
                 console.log(err)
             });
         }
+
 
         return function acb(props){return (
             <div>
                 {<AuthView 
                     onSignIn={onSignInACB}
                     onSignUp={onSignUpACB}
-                    error = {err}
-
+                    error = {err.message}
                 />}
 
             </div>
