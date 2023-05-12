@@ -2,8 +2,8 @@ function SearchFormView(props){
   
     return (
             <div>
-                <h2 class='searchBarText'>Search for a song, artist or album!</h2>
-                <input class="searchInput" onChange={searchInputACB}></input>
+                <p class='searchBarText'>Search for a song, artist or album!</p>
+                <input type="text" class="searchInput" onChange={searchInputACB}></input>
                 <select class="types" onChange={chooseTypeACB}>
                     {props.typeOptions.map(typeCB)}
                 </select>

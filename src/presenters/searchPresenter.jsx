@@ -14,6 +14,7 @@ export default{
         function bornACB(){
             if(!props.model.searchResultsPromiseState.promise) {
                 resolvePromise(props.model.doSearch({q: "Bob Marley"}), props.model.searchResultsPromiseState);
+                props.model.setSearchQuery("Bob Marley");
             }
         }
 
@@ -48,11 +49,13 @@ export default{
             />}
             {/* TODO: Check if the artists, songs,albums can be passed in a cleaner fashion */}
             {promiseNoData(props.model.searchResultsPromiseState) || 
-            <SearchResultView searchOption={props.model.searchInputType}
-            results={props.model.searchResultsPromiseState.data}
-            artists={props.model.searchResultsPromiseState.data.sections.find(result => result.type === "artist").hits}
-            songs={props.model.searchResultsPromiseState.data.sections.find(result => result.type === "song").hits} 
-            albums={props.model.searchResultsPromiseState.data.sections.find(result => result.type === "album").hits}
+            <SearchResultView 
+                searchOption={props.model.searchInputType}
+                results={props.model.searchResultsPromiseState.data}
+                artists={props.model.searchResultsPromiseState.data.sections.find(result => result.type === "artist").hits}
+                songs={props.model.searchResultsPromiseState.data.sections.find(result => result.type === "song").hits} 
+                albums={props.model.searchResultsPromiseState.data.sections.find(result => result.type === "album").hits}
+                searchInput = {props.model.searchInput.q}
             />}
 
             

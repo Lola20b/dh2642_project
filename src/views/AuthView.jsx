@@ -4,11 +4,11 @@ function loginView(props) {
     let password = "";
 
     return (
-        <div>
+        <div class="boxAndTextLogin">
 
             <div class="welcomeMusiceja">
                 <p class='WelcomeMusicejaText'>WELCOME TO MUSICEJA</p>
-                </div>
+            </div>
             <div class="login">
                 <h1>Login or Create an Account</h1>
                 <h3>E-mail Address</h3>
