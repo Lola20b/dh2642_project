@@ -3,7 +3,7 @@ function SearchFormView(props){
     return (
             <div>
                 <p class='searchBarText'>Search for a song, artist or album!</p>
-                <input type="text" class="searchInput" onChange={searchInputACB}></input>
+                <input type="text" class="searchInput" onChange={searchInputACB} onkeydown={clickEnterACB}></input>
                 <select class="types" onChange={chooseTypeACB}>
                     {props.typeOptions.map(typeCB)}
                 </select>
@@ -17,9 +17,17 @@ function SearchFormView(props){
     );
 
     //fire custom event
-    function searchInputACB(e) {props.onSearchInput(e.target.value)}
+    function searchInputACB(e) {
+        props.onSearchInput(e.target.value)
+    }
     function chooseTypeACB(e) {props.onType(e.target.value)} 
     function clickSearchACB(e) {props.onSearch()}
+    function clickEnterACB(e) {
+        if(e.key === 'Enter') {
+            props.onSearchInput(e.target.value)
+            props.onSearch()
+        }
+    }
 
     function typeCB(typeOption){
         return <option key={typeOption} value={typeOption}>

@@ -104,7 +104,7 @@
 .searchInput {
     width: 180px;
     height: 40px;
-    margin: 2% 2% 2% 2%;
+    margin: 2% 1% 2% 2%;
     padding: 5px 10px;
     border: none;
     display: inline-block;
@@ -121,7 +121,7 @@ input[type="text"] {
 .types {
     width: 100px;
     height: 40px;
-    margin: 2%;
+    margin: 2% 1% 2% 0%;
     padding: 5px 10px;
     border: none;
     display: inline-block;
@@ -133,7 +133,7 @@ input[type="text"] {
 .searchButton {
     width: 90px;
     height: 40px;
-    margin: 2%;
+    margin: 2% 2% 2% 0%;
     padding: 5px 10px;
     background-color: #3ea87a;
     border: none;
@@ -255,7 +255,7 @@ input[type="text"] {
 }
 
 .login {
-    padding: 3%;
+    padding: 10%;
     background-color: rgba(80, 101, 94, 0.456);
     border-radius: 50px;
     margin-top: 4%;
