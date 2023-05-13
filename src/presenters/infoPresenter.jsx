@@ -1,6 +1,12 @@
 import InfoView from "../views/infoView";
 import promiseNoData from "../views/promiseNoData.jsx";
 import {onMounted, onUnmounted} from "vue";
+import {router} from '../VueRoot.jsx'
+// notifications
+import { useToast, TYPE } from "vue-toastification";
+import savedItemComponent from "../components/savedItemComponent.vue";
+import { generate } from "@vue/compiler-core";
+const toast = useToast();
 
 export default 
 {
@@ -8,6 +14,7 @@ export default
     props: ["model", "type", "id"],
     setup(props) {
         function lifeACB(){
+
             if (props.type === "artist") {
                 if(!props.model.artistPromiseState.promise) {
                     props.model.fetchArtist({id: props.id});
@@ -29,6 +36,28 @@ export default
         onUnmounted(ripACB);
 
         return function renderACB() {
+            function generateToast(itemName){
+                const notif = {
+                    // Your component or JSX template
+                    component: savedItemComponent,
+                
+                    // Props are just regular props, but these won't be reactive
+                    props: {
+                        itemName: itemName,
+                    },
+                
+                    // Listeners will listen to and execute on event emission
+                    listeners: {
+                        // go to profile
+                        click: () => {
+                            router.push('/Profile');
+                            toast.clear();
+                        }
+                    },
+                };
+                toast.success(notif);
+            };
+
             if (props.type === "artist") {
                 return ( <div>
                     
@@ -57,7 +86,9 @@ export default
             }
 
             function addSongToProfileACB(song) {
+                console.log(song);
                 props.model.saveSong(song);
+                generateToast(song.title);
             }
             function addAlbumToProfileACB(album) {
                 props.model.saveAlbum(album);

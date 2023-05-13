@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js'
 
 import firebaseConfig from "../firebaseConfig.js";
-
+import { useToast } from "vue-toastification";
 
 // Initialise firebase
 const app= initializeApp(firebaseConfig);
@@ -12,6 +12,7 @@ const app= initializeApp(firebaseConfig);
 const auth = getAuth()
 
 let err = "test"
+const toast = useToast();
 
 export default 
 {
@@ -31,7 +32,6 @@ export default
                 const errorMessage = error.message;
                 err = errorMessage;
                 console.log(err)
-
             });
         }
 
@@ -47,12 +47,14 @@ export default
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 err = errorMessage;
-                console.log(err)
+                toast.error("Failed to login. Please try again!");
+                
             });
         }
 
         return function acb(props){return (
             <div>
+                
                 {<AuthView 
                     onSignIn={onSignInACB}
                     onSignUp={onSignUpACB}
