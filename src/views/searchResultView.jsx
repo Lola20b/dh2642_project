@@ -34,10 +34,14 @@ function SearchFormView(props){
     // These views are boxes
     function songView(){
         return (
-            <div class='searchResultViewBox'>
-                <h3 class="searchResultViewHeader">Songs</h3>
-                {props.songs.map(songCB)}
+            <div>
+                <p class="searchResultsFortext">Songs that match search input "{props.searchInput}"</p>
+                <div class='searchResultViewBox'>
+                    <h3 class="searchResultViewHeader">Songs</h3>
+                    {props.songs.map(songCB)}
+                </div>
             </div>
+
         );
 
         function songCB(song){
@@ -57,10 +61,14 @@ function SearchFormView(props){
 
     function artistView(){       
         return (
-            <div class='searchResultViewBox'>
+            <div>
+                <p class="searchResultsFortext">Artists that match search input "{props.searchInput}"</p>
+                <div class='searchResultViewBox'>
                 <h3 class="searchResultViewHeader">Artists</h3>
                 {props.artists.map(artistCB)}
             </div>
+            </div>
+            
         );
 
         function artistCB(artist){
@@ -80,10 +88,14 @@ function SearchFormView(props){
 
     function albumView(){
         return (
-            <div class='searchResultViewBox'>
-                <h3 class="searchResultViewHeader">Albums</h3>
-                {props.albums.map(albumCB)}
+            <div>
+                <p class="searchResultsFortext">Albums that match search input "{props.searchInput}"</p>
+                <div class='searchResultViewBox'>
+                    <h3 class="searchResultViewHeader">Albums</h3>
+                    {props.albums.map(albumCB)}
+                </div>
             </div>
+
         );
 
         function albumCB(album){

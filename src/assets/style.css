@@ -42,7 +42,7 @@
 
 .logoutButton {
     padding: 5px 10px;
-    background-color: darkseagreen;
+    background-color: #3ea87a;
     border: none;
     color: white;
     display: inline-block;
@@ -51,7 +51,7 @@
 }
 
 .logoutButton:hover {
-    background-color: rgb(79, 104, 79);
+    background-color: #49715e;
 }
 
 
@@ -90,45 +90,62 @@
     color: white;
 }
 
+.removeButton:hover {
+    background-color: rgb(118, 55, 55);
+}
+
 .searchBarText {
+    font-size: 30px;
+    font-weight: bold;
+    color: darkseagreen;
+    padding: 0px;
     margin: 2%;
 }
 .searchInput {
-    margin: 2% 2% 2% 2%;
+    width: 180px;
+    height: 40px;
+    margin: 2% 1% 2% 2%;
     padding: 5px 10px;
     border: none;
     display: inline-block;
     font-size: 12px;
-    border-radius: 10px;
+    border-radius: 16px;
     background-color: #e7e7e7;
 
+}
+
+input[type="text"] {
+    font-size: 20px;
 }
 
 .types {
-    margin: 2%;
+    width: 100px;
+    height: 40px;
+    margin: 2% 1% 2% 0%;
     padding: 5px 10px;
     border: none;
     display: inline-block;
-    font-size: 12px;
-    border-radius: 10px;
+    font-size: 20px;
+    border-radius: 16px;
     background-color: #e7e7e7;
 }
 
-
 .searchButton {
-    margin: 2%;
+    width: 90px;
+    height: 40px;
+    margin: 2% 2% 2% 0%;
     padding: 5px 10px;
-    background-color: darkseagreen;
+    background-color: #3ea87a;
     border: none;
     color: white;
     display: inline-block;
-    font-size: 12px;
-    border-radius: 10px;
+    font-size: 20px;
+    border-radius: 16px;
 
 }
 
 .searchButton:hover {
-    background-color: rgb(79, 104, 79);
+    background-color: #49715e;
 }
 
 .searchBar {
@@ -138,6 +155,13 @@
 
 
 /* SEARCHRESULTS */
+
+.searchResultsFortext {
+    font-size: 20px;
+    color: rgb(170, 170, 170);
+    margin: 2%;
+    padding: 0px;
+}
 
 .searchResultViewBox {
     display: flex;
@@ -222,16 +246,23 @@
 
 /* LOGIN PAGE */
 
-.login {
+.boxAndTextLogin {
     text-align: center;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 3%;
+}
+
+.login {
+    padding: 10%;
     background-color: rgba(80, 101, 94, 0.456);
     border-radius: 50px;
     margin-top: 4%;
+}
+
+.welcomeMusiceja {
+    margin-bottom: 10%;
 }
 
 .signInButton {
@@ -239,7 +270,7 @@
     margin-left: auto;
     margin-top: 5%;
     padding: 5px 10px;
-    background-color: darkseagreen;
+    background-color: #3ea87a;
     border: none;
     color: white;
     display: block;
@@ -252,7 +283,7 @@
     margin-left: auto;
     margin-top: 5%;
     padding: 5px 10px;
-    background-color: darkseagreen;
+    background-color: #3ea87a;
     border: none;
     color: white;
     display: block;
@@ -261,11 +292,11 @@
 }
 
 .signInButton:hover {
-    background-color: rgb(79, 104, 79);
+    background-color: #49715e;
 }
 
 .signUpButton:hover {
-    background-color: rgb(79, 104, 79);
+    background-color: #49715e;
 }
 
 .emailInput {
@@ -293,14 +324,6 @@
     background-color: #e7e7e7;
 }
 
-.welcomeMusiceja {
-    text-align: center;
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .loginErrortext {
     font-size: 20px;
     font-weight: bold;
@@ -313,7 +336,6 @@
     font-size: 40px;
     font-weight: bold;
     color: darkseagreen;
-    margin: 0px;
     padding: 0px;
 }
 
