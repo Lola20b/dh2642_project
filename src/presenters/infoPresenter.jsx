@@ -1,10 +1,14 @@
 import InfoView from "../views/infoView";
 import promiseNoData from "../views/promiseNoData.jsx";
+import { useToast } from "vue-toastification";
+import savedItemComponent from "../components/savedItemComponent.vue";
 import {onMounted, onUnmounted, reactive} from "vue";
 import { getDatabase, ref, get, set, update, push } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js'
 import firebaseConfig from "/src/firebaseConfig.js";
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js'
+import {router} from "/src/VueRoot.jsx";
 
+const toast = useToast();
 
 export default 
 {
@@ -70,7 +74,28 @@ export default
         onUnmounted(ripACB);
 
         return function renderACB() {
-            
+            function generateToast(itemName){
+                const notif = {
+                    // Your component or JSX template
+                    component: savedItemComponent,
+                
+                    // Props are just regular props, but these won't be reactive
+                    props: {
+                        itemName: itemName,
+                    },
+                
+                    // Listeners will listen to and execute on event emission
+                    listeners: {
+                        // go to profile
+                        click: () => {
+                            router.push('/Profile');
+                            toast.clear();
+                        }
+                    },
+                };
+                toast.success(notif);
+            };
+
             if (props.type === "artist") {
                 return ( <div>
                     
@@ -126,7 +151,9 @@ export default
             }
 
             function addSongToProfileACB(song) {
+                console.log(song);
                 props.model.saveSong(song);
+                generateToast(song.title);
             }
             function addAlbumToProfileACB(album) {
                 props.model.saveAlbum(album);
