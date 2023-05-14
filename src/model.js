@@ -29,7 +29,6 @@ class Model{
 
         // authentication
         this.ready = true;
-        this.user = null;
     }    
 
     // Set the search input
