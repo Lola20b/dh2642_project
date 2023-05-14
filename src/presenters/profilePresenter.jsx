@@ -1,10 +1,18 @@
 import ProfileView from "../views/profileView";
+import { onUnmounted} from "vue";
+
 
 export default 
 {
     name: "Info",
     props: ["model"],
     setup(props) {
+        onUnmounted(() => {
+            props.model.savedAlbums = [];
+            props.model.savedArtists = [];
+            props.model.savedSongs = [];
+        });
+
         // TODO: Implement functions below
         function ArtistRemoveACB(artist){
             props.model.removeArtist(artist);
