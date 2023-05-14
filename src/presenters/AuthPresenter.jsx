@@ -5,6 +5,8 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebas
 
 import firebaseConfig from "../firebaseConfig.js";
 import { useToast } from "vue-toastification";
+import { reactive, watchEffect, ref } from "vue";
+
 
 // Initialise firebase
 const app= initializeApp(firebaseConfig);
@@ -19,6 +21,8 @@ export default
     name: "Auth",
     setup(){
 
+        let err = reactive({message: ""})
+
         //Create account
         function onSignUpACB(email, password) {
             createUserWithEmailAndPassword(auth, email, password)
@@ -30,7 +34,7 @@ export default
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                err = errorMessage;
+                err.message = errorMessage;
                 console.log(err)
             });
         }
@@ -46,11 +50,11 @@ export default
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                err = errorMessage;
                 toast.error("Failed to login. Please try again!");
                 
             });
         }
+
 
         return function acb(props){return (
             <div>
@@ -58,8 +62,7 @@ export default
                 {<AuthView 
                     onSignIn={onSignInACB}
                     onSignUp={onSignUpACB}
-                    error = {err}
-
+                    error = {err.message}
                 />}
 
             </div>

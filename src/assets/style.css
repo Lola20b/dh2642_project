@@ -231,6 +231,7 @@
     padding: 3%;
     background-color: rgba(80, 101, 94, 0.456);
     border-radius: 50px;
+    margin-top: 4%;
 }
 
 .signInButton {
@@ -298,8 +299,28 @@
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 3%;    
+}
+
+.loginErrortext {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(216, 109, 109);
+    margin: 0px;
+    padding: 0px;
+}
+
+.WelcomeMusicejaText {
+    font-size: 40px;
+    font-weight: bold;
+    color: darkseagreen;
+    margin: 0px;
+    padding: 0px;
 }
 
 
-
+/* Loading */
+.promiseStateLoading {
+    text-align: center;
+    position: fixed;
+    height: 50%;
+}

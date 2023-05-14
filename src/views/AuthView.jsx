@@ -7,7 +7,7 @@ function loginView(props) {
         <div>
 
             <div class="welcomeMusiceja">
-                <h1>WELCOME TO MUSICEJA</h1>
+                <p class='WelcomeMusicejaText'>WELCOME TO MUSICEJA</p>
                 </div>
             <div class="login">
                 <h1>Login or Create an Account</h1>
@@ -17,7 +17,7 @@ function loginView(props) {
                 <input class="passwordInput" type="password" onChange={passwordInputACB} PlaceHolder="Enter Password"></input>
                 <button class="signInButton" onClick={signInACB}>Login</button>
                 <button class="signUpButton" onClick={signUpACB}>Create Account</button>
-                <h2>{console.log(props.error)}</h2>
+                <p class='loginErrortext'>{props.error}</p>
             </div>
 
 
@@ -40,7 +40,8 @@ function loginView(props) {
     }
 
     function signUpACB() {
-        props.onSignUp(email, password)
+        props.onSignUp(email, password);
+
     }
 }
 
