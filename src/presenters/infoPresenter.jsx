@@ -230,7 +230,7 @@ export default
                             if(likeList.includes(props.model.user.uid)) {
                                 console.log("user already liked")
                             } else {
-                                push(ref(db, 'likedSongs/' + song.id + '/likes'), props.model.user.uid)
+                                push(ref(db, 'likedAlbums/' + album.id + '/likes'), props.model.user.uid)
                             }
                         })
 
