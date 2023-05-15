@@ -107,7 +107,6 @@ function modelToPersistence(model) {
             return null;
         }
         if(obj.title){
-            console.log(obj.id)
             return {id: obj.id, name: obj.title};
         }else{
             return {id: obj.id, name: obj.name};
