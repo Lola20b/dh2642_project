@@ -18,7 +18,7 @@ const auth = getAuth();
 
 function observerRecap(model) {
     function printPayloadACB(payload){
-        console.log(payload);
+        // console.log(payload);
     }
     model.addObserver(printPayloadACB);
 }
@@ -27,8 +27,6 @@ function observerRecap(model) {
 function connectModelToFirebase(model) {
     //addObserver --> if model.ready set(REF)
     // onAuthStateChanged --> ACB(user)
-
-    console.log("model", model)
     
     model.addObserver(obsACB)
 
@@ -37,7 +35,6 @@ function connectModelToFirebase(model) {
     onAuthStateChanged(auth, userACB)
 
     function obsACB() {
-        console.log("model", model)
         if(model.ready && model.user) {
             set(ref(db, 'users/' + model.user.uid), modelToPersistence(model));
             //update(ref(db), modelToPersistenceLikes(model));
@@ -71,7 +68,6 @@ function firebaseModelPromise(model) {
     }
 
     function persistenceToModelACB(dataFromFirebase) {
-        console.log("persistence to model")
 
         if(!dataFromFirebase.val()) {
             return;
@@ -113,7 +109,7 @@ function modelToPersistence(model) {
         if(!obj) {
             return null;
         }
-        console.log(obj.id)
+
         return obj.id;
     }           
 }
@@ -207,7 +203,7 @@ function persistenceToModel(persistedData={}, model) {
         return model;
     }
 
-    // // Liked artists, songs and albums
+    // Liked artists, songs and albums
     // if(persistedData.likedArtists) {
     //     model.likedAlbums = persistedData.likedArtists
     // }

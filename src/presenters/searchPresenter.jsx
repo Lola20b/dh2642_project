@@ -31,7 +31,6 @@ export default{
         }
 
         function onTypeACB(searchType){
-            console.log(searchType)
             props.model.setSearchType(searchType);
         }
 

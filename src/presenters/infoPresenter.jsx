@@ -42,7 +42,6 @@ export default
                             }
                         } else {
                             artistLikesCounter.likes = 0;
-                            console.log("no data")
                         }
                     })
                 }
@@ -60,7 +59,6 @@ export default
                             }
                         } else {
                             albumLikesCounter.likes = 0;
-                            console.log("no data")
                         }
                     })
                 };
@@ -78,15 +76,14 @@ export default
                                 alreadyLikedSong.liked = false;
                             }
                         } else {
-                            songLikesCounter.likes = 0
-                            console.log("no data")
+                            songLikesCounter.likes = 0;
                         }
                     })
                 }
             };
 
         }
-        function ripACB(){console.log("perform cleanup");} 
+        function ripACB(){} 
 
         onMounted(lifeACB);
         onUnmounted(ripACB);
@@ -171,7 +168,6 @@ export default
             }
 
             function addSongToProfileACB(song) {
-                console.log(song);
                 props.model.saveSong(song);
                 generateToast(song.title);
             }
@@ -193,9 +189,7 @@ export default
 
                         get(ref(db,'likedSongs/' +song.id+'/likes')).then(function(snapshot2) {
                             let likeList = Object.values(snapshot2.val())
-                            if(likeList.includes(props.model.user.uid)) {
-                                console.log("user already liked")
-                            } else {
+                            if(!likeList.includes(props.model.user.uid)) {
                                 push(ref(db, 'likedSongs/' + song.id + '/likes'), props.model.user.uid)
                             }
                         })
@@ -212,8 +206,6 @@ export default
                     if (snapshot.exists()) {
                         songLikesCounter.likes = Object.values(snapshot.val()).length
                         alreadyLikedSong.liked = true
-                    } else {
-                        console.log("no data")
                     }
                 })
                 
@@ -227,9 +219,7 @@ export default
 
                         get(ref(db,'likedAlbums/' +album.id+'/likes')).then(function(snapshot2) {
                             let likeList = Object.values(snapshot2.val())
-                            if(likeList.includes(props.model.user.uid)) {
-                                console.log("user already liked")
-                            } else {
+                            if(!likeList.includes(props.model.user.uid)) {
                                 push(ref(db, 'likedAlbums/' + album.id + '/likes'), props.model.user.uid)
                             }
                         })
@@ -246,8 +236,6 @@ export default
                     if (snapshot.exists()) {
                         albumLikesCounter.likes = Object.values(snapshot.val()).length
                         alreadyLikedAlbum.liked = true
-                    } else {
-                        console.log("no data")
                     }
                 })
                 
@@ -262,9 +250,7 @@ export default
 
                         get(ref(db,'likedArtists/' +artist.id+'/likes')).then(function(snapshot2) {
                             let likeList = Object.values(snapshot2.val())
-                            if(likeList.includes(props.model.user.uid)) {
-                                console.log("user already liked")
-                            } else {
+                            if(!likeList.includes(props.model.user.uid)) {
                                 push(ref(db, 'likedArtists/' + artist.id + '/likes'), props.model.user.uid)
                             }
                         })
@@ -280,8 +266,6 @@ export default
                     if (snapshot.exists()) {
                         artistLikesCounter.likes = Object.values(snapshot.val()).length
                         alreadyLikedArtist.liked = true
-                    } else {
-                        console.log("no data")
                     }
                 })
                 

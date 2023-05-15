@@ -3,9 +3,7 @@ function SearchFormView(props){
     // depending on searchoption we want to render different views
     return (
             <div>
-                {console.log(props.songs)}
                 {function searchOptionCB(){
-                    console.log(props.searchOption)
                     if (props.searchOption === "All"){
                         return allView();
                     }else if(props.searchOption === "Song"){
