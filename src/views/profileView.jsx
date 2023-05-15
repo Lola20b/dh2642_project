@@ -47,7 +47,7 @@ function ProfileView(props) {
     function songsPresentCB(song){
         return (
             <tr class="tableRow">
-                <a  href={'/Info?type=song&id='+song.id}>{song.title}</a>
+                <a  href={'/Info?type=song&id='+song.id}>{song.name}</a>
                 <button class="removeButton" onClick={clickRemoveSongACB}>Remove</button>
             </tr>
         );

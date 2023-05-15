@@ -8,9 +8,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 
 import firebaseConfig from "/src/firebaseConfig.js";
 
-import { getSongDetails, getArtistDetails, getAlbumDetails, getAlbumDetailsFirebase, getArtistDetailsFirebase, getSongDetailsFirebase } from './geniusAPI';
-
-
 // Initialise firebase
 const app= initializeApp(firebaseConfig);
 const db= getDatabase(app);
@@ -113,60 +110,16 @@ function modelToPersistence(model) {
         if(!obj) {
             return null;
         }
-        console.log(obj.id)
-        return obj.id;
+        if(obj.title){
+            console.log(obj.id)
+            return {id: obj.id, name: obj.title};
+        }else{
+            return {id: obj.id, name: obj.name};
+        }
     }           
 }
 
-function modelToPersistenceLikes(model) {
-    const persistedData = {likedArtists: [], likedAlbums: [], likedSongs: []};
 
-    // save liked artists
-    if(model.likedArtists) {
-        persistedData.likedArtists = model.likedArtists.map(getArtistIDCB).sort();
-    } else {
-        persistedData.savedArtists = [];
-    }
-
-    // save liked albums
-    if(model.likedAlbums) {
-        persistedData.likedAlbums = model.likedAlbums.map(getAlbumIDCB).sort();
-    } else {
-        persistedData.likedAlbums = [];
-    }
-
-            
-    // save liked songs
-    if(model.likedSongs) {
-        persistedData.likedSongs = model.likedSongs.map(getSongIDCB).sort();
-    } else {
-        persistedData.likedSongs = [];
-    }
-
-    return persistedData;
-
-    function getSongIDCB(song) {
-        if(!song) {
-            return null;
-        }
-        return song;
-    }        
-    
-    function getAlbumIDCB(album) {
-        if(!album) {
-            return null;
-        }
-        return album;
-    } 
-
-    function getArtistIDCB(artist) {
-        if(!artist) {
-            return null;
-        }
-        return artist;
-    } 
-
-}
 
 
 function persistenceToModel(persistedData={}, model) {
@@ -176,48 +129,23 @@ function persistenceToModel(persistedData={}, model) {
 
     // artists
     if(persistedData.savedArtists) {
-        let artists = persistedData.savedArtists.map(getArtistDetailsFirebase);
-        artists.map(setModelArtistsCB)
-    }
-
-    function setModelArtistsCB(artist) {
-        artist.then((value) => model.savedArtists.push(value.artist))
-        return model;
+        let artists = persistedData.savedArtists;
+        artists.map((value) => model.savedArtists.push(value))
     }
 
     // Songs
     if(persistedData.savedSongs) {
-        let songs = persistedData.savedSongs.map(getSongDetailsFirebase);
-        songs.map(setModelSongsCB)
-    }
-
-    function setModelSongsCB(song) {
-        song.then((value) => model.savedSongs.push(value.song))
-        return model;
+        let songs = persistedData.savedSongs;
+        songs.map((value) => model.savedSongs.push(value));
     }
 
     // albums
     if(persistedData.savedAlbums) {
-        let albumbs = persistedData.savedAlbums.map(getAlbumDetailsFirebase);
-        albumbs.map(setModelAlbumsCB)
+        let albums = persistedData.savedAlbums;
+        albums.map((value) => model.savedAlbums.push(value))
     }
 
-    function setModelAlbumsCB(album) {
-        album.then((value) => model.savedAlbums.push(value.album))
-        return model;
-    }
-
-    // // Liked artists, songs and albums
-    // if(persistedData.likedArtists) {
-    //     model.likedAlbums = persistedData.likedArtists
-    // }
-    // if(persistedData.savedArtists) {
-    //     model.likedArtists = persistedData.likedArtists
-    // }
-    // if(persistedData.likedSongs) {
-    //     model.likedSongs = persistedData.likedSongs
-    // }
 }
 
 
-export {observerRecap, firebaseModelPromise, modelToPersistence, modelToPersistenceLikes, persistenceToModel, connectModelToFirebase, auth};
+export {observerRecap, firebaseModelPromise, modelToPersistence, persistenceToModel, connectModelToFirebase, auth};

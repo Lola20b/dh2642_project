@@ -40,22 +40,7 @@ function getArtistDetails(object) {
     return fetch(BASE_URL + '/artist/details/?'+ new URLSearchParams(object), options).then(treatHTTPResponseACB);
 }
 
-function getArtistDetailsFirebase(object) {
-    console.log(object)
-    return fetch(BASE_URL + '/artist/details/?id='+ object, options).then(treatHTTPResponseACB);
-}
-
-function getAlbumDetailsFirebase(object) {
-    console.log(object)
-    return fetch(BASE_URL + '/album/details/?id='+ object, options).then(treatHTTPResponseACB);
-}
-
-function getSongDetailsFirebase(object) {
-    console.log(object)
-    return fetch(BASE_URL + '/song/details/?id='+ object, options).then(treatHTTPResponseACB);
-}
 
 
-
-export {searchMusic, getSongDetails, getLyricsDetails, getAlbumDetails, getArtistDetails, getAlbumDetailsFirebase, getArtistDetailsFirebase, getSongDetailsFirebase}
+export {searchMusic, getSongDetails, getLyricsDetails, getAlbumDetails, getArtistDetails}
 
