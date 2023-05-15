@@ -12,13 +12,14 @@
 
 .mainContent {
     flex:1;
+    overflow: scroll;
 }
 
 
 /* Sidebar */
 .sidebar {
     flex:0 0 200px;
-    border-style:solid;
+    border-right: 1px solid;
     padding: 10px;
 }
 
@@ -33,6 +34,7 @@
     font-size: large;
 }
 .sidebarView{
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -42,16 +44,17 @@
 
 .logoutButton {
     padding: 5px 10px;
-    background-color: #3ea87a;
+    background-color: indianred;
     border: none;
     color: white;
     display: inline-block;
     font-size: 12px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .logoutButton:hover {
-    background-color: #49715e;
+    background-color: rgb(118, 55, 55);
+    cursor: pointer;
 }
 
 
@@ -86,12 +89,13 @@
     background-color: indianred;
     border: none;
     border-radius: 5px;
-    padding: 1.3%;
+    padding: 5px 10px;
     color: white;
 }
 
 .removeButton:hover {
     background-color: rgb(118, 55, 55);
+    cursor: pointer;
 }
 
 .searchBarText {
@@ -146,6 +150,7 @@ input[type="text"] {
 
 .searchButton:hover {
     background-color: #49715e;
+    cursor: pointer;
 }
 
 .searchBar {
@@ -238,11 +243,35 @@ input[type="text"] {
     border: 1px solid black;
 }
 
+/* INFO VIEW */
+
 .infoView {
-    border-style: solid;
     padding: 2%;
     white-space: pre-line;
+    display: grid;
+    grid-row-gap: 10px;
 }
+
+.infoViewButton {
+    background-color: #3ea87a;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+}
+
+.infoViewButton:hover {
+    background-color: #49715e;
+    cursor: pointer;
+}
+
+.infoViewButton:disabled {
+    background-color: #5c776a;
+    cursor: default;
+    color: #284437;
+}
+
 
 /* LOGIN PAGE */
 
@@ -293,10 +322,12 @@ input[type="text"] {
 
 .signInButton:hover {
     background-color: #49715e;
+    cursor: pointer;
 }
 
 .signUpButton:hover {
     background-color: #49715e;
+    cursor: pointer;
 }
 
 .emailInput {
