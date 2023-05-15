@@ -54,6 +54,7 @@
 
 .logoutButton:hover {
     background-color: rgb(118, 55, 55);
+    cursor: pointer;
 }
 
 
@@ -94,6 +95,7 @@
 
 .removeButton:hover {
     background-color: rgb(118, 55, 55);
+    cursor: pointer;
 }
 
 .searchBarText {
@@ -148,6 +150,7 @@ input[type="text"] {
 
 .searchButton:hover {
     background-color: #49715e;
+    cursor: pointer;
 }
 
 .searchBar {
@@ -240,10 +243,35 @@ input[type="text"] {
     border: 1px solid black;
 }
 
+/* INFO VIEW */
+
 .infoView {
     padding: 2%;
     white-space: pre-line;
+    display: grid;
+    grid-row-gap: 10px;
 }
+
+.infoViewButton {
+    background-color: #3ea87a;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+}
+
+.infoViewButton:hover {
+    background-color: #49715e;
+    cursor: pointer;
+}
+
+.infoViewButton:disabled {
+    background-color: #5c776a;
+    cursor: default;
+    color: #284437;
+}
+
 
 /* LOGIN PAGE */
 
@@ -294,10 +322,12 @@ input[type="text"] {
 
 .signInButton:hover {
     background-color: #49715e;
+    cursor: pointer;
 }
 
 .signUpButton:hover {
     background-color: #49715e;
+    cursor: pointer;
 }
 
 .emailInput {
