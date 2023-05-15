@@ -19,7 +19,7 @@ MUSICEJA is an app that allows the users to search for and find interesting info
 - vue-toastification (3rd party component)
 
 ## User feedback
-For this project we conducted two user consultations and one mid project review as part of the course. The received feedback and implemented changes can be found documented in userfeedback.txt.
+For this project we conducted two user consultations and one mid project review as part of the course. The received feedback and implemented changes can be found documented in userfeedback.pdf.
 
 ## Project file structure (short description/purpose of each file)
 
