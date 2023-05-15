@@ -69,6 +69,7 @@ class Model{
 
         // Adds song att end of savedArtists if not already present
         if (!this.savedSongs.some(sameSongIdCB)) {
+            song = {id: song.id, name: song.title};
             this.savedSongs= [...this.savedSongs, song];
             this.notifyObservers({addedSong: song})
         }
