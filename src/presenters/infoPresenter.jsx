@@ -173,9 +173,11 @@ export default
             }
             function addAlbumToProfileACB(album) {
                 props.model.saveAlbum(album);
+                generateToast(album.full_title);
             }
             function addArtistToProfileACB(artist) {
                 props.model.saveArtist(artist);
+                generateToast(artist.name);
             }
 
 

@@ -33,8 +33,9 @@ export default
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                err.message = errorMessage;
-                console.error(err)
+                // err.message = errorMessage;
+                // console.error(err);
+                toast.error("Failed to signup. Please try again!");
             });
         }
 
