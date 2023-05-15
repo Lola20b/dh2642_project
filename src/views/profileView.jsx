@@ -28,11 +28,7 @@ function ProfileView(props) {
             </div>
         </div>
     );
-        
 
-    function print() {
-        props.printPres()
-    }
     function artistsPresentCB(artist){
         return (
             <tr class="tableRow">

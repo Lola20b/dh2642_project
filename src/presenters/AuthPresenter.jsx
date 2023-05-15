@@ -29,13 +29,13 @@ export default
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user);
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                err.message = errorMessage;
-                console.log(err)
+                // err.message = errorMessage;
+                // console.error(err);
+                toast.error("Failed to signup. Please try again!");
             });
         }
 

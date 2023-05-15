@@ -11,7 +11,7 @@ function SidebarView(props) {
             <div>
                 <a href="/Profile">Profile</a>
             </div>
-            <div>
+            <div style="margin-top: auto;align-self: center;margin-bottom: 10%;">
                 <button class = "logoutButton" onClick={logoutACB}>
                     Logout
                 </button>

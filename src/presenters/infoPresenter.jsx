@@ -24,6 +24,9 @@ export default
         let albumLikesCounter = reactive({likes: 0})
         let artistLikesCounter = reactive({likes: 0})
 
+        let alreadyLikedArtist = reactive({liked: false})
+        let alreadyLikedSong = reactive({liked: false})
+        let alreadyLikedAlbum = reactive({liked: false})
 
         async function lifeACB(){
             if (props.type === "artist") {
@@ -32,9 +35,13 @@ export default
                     get(ref(db, `likedArtists/${props.id}/likes`)).then((snapshot) => {
                         if (snapshot.exists()) {
                             artistLikesCounter.likes = Object.values(snapshot.val()).length
+                            if (Object.values(snapshot.val()).includes(props.model.user.uid)) {
+                                alreadyLikedArtist.liked = true;
+                            } else {
+                                alreadyLikedArtist.liked = false;
+                            }
                         } else {
                             artistLikesCounter.likes = 0;
-                            console.log("no data")
                         }
                     })
                 }
@@ -45,9 +52,13 @@ export default
                     get(ref(db, `likedAlbums/${props.id}/likes`)).then((snapshot) => {
                         if (snapshot.exists()) {
                             albumLikesCounter.likes = Object.values(snapshot.val()).length
+                            if (Object.values(snapshot.val()).includes(props.model.user.uid)) {
+                                alreadyLikedAlbum.liked = true;
+                            } else {
+                                alreadyLikedAlbum.liked = false;
+                            }
                         } else {
                             albumLikesCounter.likes = 0;
-                            console.log("no data")
                         }
                     })
                 };
@@ -59,16 +70,20 @@ export default
                     get(ref(db, `likedSongs/${props.id}/likes`)).then((snapshot) => {
                         if (snapshot.exists()) {
                             songLikesCounter.likes = Object.values(snapshot.val()).length
+                            if (Object.values(snapshot.val()).includes(props.model.user.uid)) {
+                                alreadyLikedSong.liked = true;
+                            } else {
+                                alreadyLikedSong.liked = false;
+                            }
                         } else {
-                            songLikesCounter.likes = 0
-                            console.log("no data")
+                            songLikesCounter.likes = 0;
                         }
                     })
                 }
             };
 
         }
-        function ripACB(){console.log("perform cleanup");} 
+        function ripACB(){} 
 
         onMounted(lifeACB);
         onUnmounted(ripACB);
@@ -108,6 +123,7 @@ export default
                         likeArtist={likeArtistACB}
                         isArtistSaved={props.model.savedArtists.find(matchACB)}
                         artistLikesCounter = {artistLikesCounter.likes}
+                        alreadyLikedArtist = {alreadyLikedArtist.liked}
                     />
                     }
                 
@@ -124,6 +140,7 @@ export default
                         likeAlbum={likeAlbumACB}
                         isAlbumSaved={props.model.savedAlbums.find(matchACB)}
                         albumLikesCounter = {albumLikesCounter.likes}
+                        alreadyLikedAlbum = {alreadyLikedAlbum.liked}
                     />}
 
                     </div>);
@@ -140,7 +157,7 @@ export default
                         likeSong={likeSongACB}
                         songLikesCounter = {songLikesCounter.likes}
                         isSongSaved={props.model.savedSongs.find(matchACB)}
-    
+                        alreadyLikedSong = {alreadyLikedSong.liked}
                     />}
                 
                     </div>);
@@ -151,15 +168,16 @@ export default
             }
 
             function addSongToProfileACB(song) {
-                console.log(song);
                 props.model.saveSong(song);
                 generateToast(song.title);
             }
             function addAlbumToProfileACB(album) {
                 props.model.saveAlbum(album);
+                generateToast(album.full_title);
             }
             function addArtistToProfileACB(artist) {
                 props.model.saveArtist(artist);
+                generateToast(artist.name);
             }
 
 
@@ -173,9 +191,7 @@ export default
 
                         get(ref(db,'likedSongs/' +song.id+'/likes')).then(function(snapshot2) {
                             let likeList = Object.values(snapshot2.val())
-                            if(likeList.includes(props.model.user.uid)) {
-                                console.log("user already liked")
-                            } else {
+                            if(!likeList.includes(props.model.user.uid)) {
                                 push(ref(db, 'likedSongs/' + song.id + '/likes'), props.model.user.uid)
                             }
                         })
@@ -191,8 +207,7 @@ export default
                 get(ref(db, `likedSongs/${props.model.songPromiseState.data.song.id}/likes`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         songLikesCounter.likes = Object.values(snapshot.val()).length
-                    } else {
-                        console.log("no data")
+                        alreadyLikedSong.liked = true
                     }
                 })
                 
@@ -206,10 +221,8 @@ export default
 
                         get(ref(db,'likedAlbums/' +album.id+'/likes')).then(function(snapshot2) {
                             let likeList = Object.values(snapshot2.val())
-                            if(likeList.includes(props.model.user.uid)) {
-                                console.log("user already liked")
-                            } else {
-                                push(ref(db, 'likedSongs/' + song.id + '/likes'), props.model.user.uid)
+                            if(!likeList.includes(props.model.user.uid)) {
+                                push(ref(db, 'likedAlbums/' + album.id + '/likes'), props.model.user.uid)
                             }
                         })
 
@@ -224,8 +237,7 @@ export default
                 get(ref(db, `likedAlbums/${props.model.albumPromiseState.data.album.id}/likes`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         albumLikesCounter.likes = Object.values(snapshot.val()).length
-                    } else {
-                        console.log("no data")
+                        alreadyLikedAlbum.liked = true
                     }
                 })
                 
@@ -240,10 +252,8 @@ export default
 
                         get(ref(db,'likedArtists/' +artist.id+'/likes')).then(function(snapshot2) {
                             let likeList = Object.values(snapshot2.val())
-                            if(likeList.includes(props.model.user.uid)) {
-                                console.log("user already liked")
-                            } else {
-                                push(ref(db, 'likedSongs/' + song.id + '/likes'), props.model.user.uid)
+                            if(!likeList.includes(props.model.user.uid)) {
+                                push(ref(db, 'likedArtists/' + artist.id + '/likes'), props.model.user.uid)
                             }
                         })
                     } else {
@@ -257,8 +267,7 @@ export default
                 get(ref(db, `likedArtists/${props.model.artistPromiseState.data.artist.id}/likes`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         artistLikesCounter.likes = Object.values(snapshot.val()).length
-                    } else {
-                        console.log("no data")
+                        alreadyLikedArtist.liked = true
                     }
                 })
                 
