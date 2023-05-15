@@ -4,33 +4,31 @@ function ProfileView(props) {
         // a bottom row that has a list of the artists, songs, and albums.
         // Use placeholder css-classes for now and then these will be styled later. The lists of artists, songs, and albums
         // will be filled in using the _presentCB functions below. 
-        <div class="profileTest">
-
-            <table class="profileTable">
-                <thead class="tableTitle">Artists</thead>
-                <tbody>
-                    {props.savedArtists.map(artistsPresentCB)}
-                </tbody>
-            </table>
-            <table class="profileTable">
-                <thead class="tableTitle">Songs</thead>
-                <tbody>
-                {props.savedSongs.map(songsPresentCB)}
-                </tbody>
-            </table>
-            <table class="profileTable">
-                <thead class="tableTitle">Albums</thead>
-                <tbody>
-                {props.savedAlbums.map(albumsPresentCB)}
-                </tbody>
-            </table>
+        <div>
+             <p class='searchBarText'>Your saved Artists, Songs and Albums</p>
+            <div class="profileTest">
+                <table class="profileTable">
+                    <thead class="tableTitle">Artists</thead>
+                    <tbody>
+                        {props.savedArtists.map(artistsPresentCB)}
+                    </tbody>
+                </table>
+                <table class="profileTable">
+                    <thead class="tableTitle">Songs</thead>
+                    <tbody>
+                    {props.savedSongs.map(songsPresentCB)}
+                    </tbody>
+                </table>
+                <table class="profileTable">
+                    <thead class="tableTitle">Albums</thead>
+                    <tbody>
+                    {props.savedAlbums.map(albumsPresentCB)}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
-        
 
-    function print() {
-        props.printPres()
-    }
     function artistsPresentCB(artist){
         return (
             <tr class="tableRow">

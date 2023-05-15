@@ -94,8 +94,6 @@ class Model{
         // Adds artist att end of savedArtists if not already present
         if (!this.savedArtists.some(sameArtistIdCB)) {
             this.savedArtists= [...this.savedArtists, artist];
-            console.log("Save artist");
-            console.log(this.savedArtists);
             this.notifyObservers({addedArtist: artist})
 
         }
@@ -155,7 +153,6 @@ class Model{
             try{obs(payload);}catch(err){console.error(err);} 
         }
 
-        console.log(this.observerArray)
         this.observerArray.forEach(invokeObserverCB) 
     }
 }

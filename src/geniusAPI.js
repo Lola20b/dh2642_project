@@ -41,17 +41,14 @@ function getArtistDetails(object) {
 }
 
 function getArtistDetailsFirebase(object) {
-    console.log(object)
     return fetch(BASE_URL + '/artist/details/?id='+ object, options).then(treatHTTPResponseACB);
 }
 
 function getAlbumDetailsFirebase(object) {
-    console.log(object)
     return fetch(BASE_URL + '/album/details/?id='+ object, options).then(treatHTTPResponseACB);
 }
 
 function getSongDetailsFirebase(object) {
-    console.log(object)
     return fetch(BASE_URL + '/song/details/?id='+ object, options).then(treatHTTPResponseACB);
 }
 
